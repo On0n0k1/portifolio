@@ -161,10 +161,25 @@ const projects: ProjectEntry[] = [
 ]
 
 const heroReadouts = [
-  { digits: '1M+', label: 'Events / day, zero data loss' },
-  { digits: '2,000', label: 'Requests / second' },
-  { digits: '−60%', label: 'Latency, after optimization' },
+  {
+    digits: '1M+',
+    label: 'Events / day, zero data loss',
+    trace: 'M0,40 L10,15 L18,45 L26,10 L34,42 L42,20 L50,44 L58,12 L66,40 L74,18 L82,46 L90,14 L98,38 L106,22 L114,44 L122,16 L130,40 L138,20 L146,44 L154,12 L162,38 L170,24 L178,42 L186,18 L194,40',
+  },
+  {
+    digits: '2,000',
+    label: 'Requests / second',
+    trace: 'M0,40 L0,20 L20,20 L20,40 L40,40 L40,20 L60,20 L60,40 L80,40 L80,20 L100,20 L100,40 L120,40 L120,20 L140,20 L140,40 L160,40 L160,20 L180,20 L180,40 L200,40 L200,20',
+  },
+  {
+    digits: '−60%',
+    label: 'Latency, after optimization',
+    trace: 'M0,15 L60,15 L75,15 L90,42 L200,42',
+  },
 ]
+
+type World = 'panel' | 'scope'
+const WORLD_STORAGE_KEY = 'impeccable-portfolio-world'
 
 const navSections = [
   { id: 'summary', label: 'Summary' },
@@ -242,9 +257,51 @@ function ContactLinks() {
   )
 }
 
+function useWorld(): [World, (world: World) => void] {
+  const [world, setWorld] = useState<World>(() => {
+    const stored = localStorage.getItem(WORLD_STORAGE_KEY)
+    return stored === 'scope' ? 'scope' : 'panel'
+  })
+
+  useEffect(() => {
+    if (world === 'scope') {
+      document.documentElement.setAttribute('data-theme', 'scope')
+    } else {
+      document.documentElement.removeAttribute('data-theme')
+    }
+    localStorage.setItem(WORLD_STORAGE_KEY, world)
+  }, [world])
+
+  return [world, setWorld]
+}
+
+function WorldToggle({ world, onChange }: { world: World; onChange: (world: World) => void }) {
+  return (
+    <div className="world-toggle" role="group" aria-label="Visual theme">
+      <button
+        type="button"
+        className="world-toggle__option"
+        aria-pressed={world === 'panel'}
+        onClick={() => onChange('panel')}
+      >
+        Panel
+      </button>
+      <button
+        type="button"
+        className="world-toggle__option"
+        aria-pressed={world === 'scope'}
+        onClick={() => onChange('scope')}
+      >
+        Scope
+      </button>
+    </div>
+  )
+}
+
 function App() {
   const sectionIds = useRef(navSections.map((s) => s.id)).current
   const activeId = useActiveSection(sectionIds)
+  const [world, setWorld] = useWorld()
 
   return (
     <div className="chassis">
@@ -266,6 +323,7 @@ function App() {
             </a>
           ))}
         </div>
+        <WorldToggle world={world} onChange={setWorld} />
       </nav>
 
       <header className="bank hero">
@@ -281,16 +339,31 @@ function App() {
             </div>
           </div>
 
-          <div className="readouts readouts--separated" role="group" aria-label="Career metrics">
-            {heroReadouts.map((r, i) => (
-              <div className="readout" key={r.label}>
-                <p className="readout__digits" data-delay={String(i)}>
-                  {r.digits}
-                </p>
-                <p className="readout__label">{r.label}</p>
-              </div>
-            ))}
-          </div>
+          {world === 'scope' ? (
+            <div className="readouts readouts--separated" role="group" aria-label="Career metrics">
+              {heroReadouts.map((r, i) => (
+                <div className="trace-screen" data-delay={String(i)} key={r.label}>
+                  <svg viewBox="0 0 200 60" aria-hidden="true">
+                    <path d={r.trace} />
+                  </svg>
+                  <p className="trace-screen__label">
+                    {r.digits} — {r.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="readouts readouts--separated" role="group" aria-label="Career metrics">
+              {heroReadouts.map((r, i) => (
+                <div className="readout" key={r.label}>
+                  <p className="readout__digits" data-delay={String(i)}>
+                    {r.digits}
+                  </p>
+                  <p className="readout__label">{r.label}</p>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </header>
 

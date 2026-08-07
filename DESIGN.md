@@ -22,6 +22,12 @@ It explicitly rejects the two ruts common to engineer portfolios: the neon hacke
 - Depth comes from glow, not drop shadows: the chassis stays flat, light does the work.
 - Understated by the user's explicit request: precise and quiet, not a loud gimmick.
 
+### Second world: the Scope toggle
+
+A "Panel / Scope" toggle in the nav (top of page) switches the whole site into a second committed world: an observatory oscilloscope bank. Same content and layout topology, different register — cool near-black ground, cyan trace-glow accent instead of amber, Space Grotesk/Space Mono instead of IBM Plex, a fine graticule-grid texture on panel surfaces, and larger 3–6px machined radii evoking CRT glass. Its signature moment replaces the hero's nixie digit readouts with hand-drawn oscilloscope trace paths (SVG, stroke-draw animation) — a genuine interaction/rendering difference from the Panel world's digits, not a recolor. Full token values live in `src/index.css` under `[data-theme='scope']`, with inline comments explaining the reuse of token names across both worlds.
+
+This file's token values below describe the default Panel world only; this is still a seed pending a `/impeccable document` rescan now that real implementation exists for both worlds.
+
 ## Colors
 
 Near-black matte steel ground; one warm amber glow accent used sparingly and only for live/lit states — restraint is what makes the glow read as real light rather than decoration.

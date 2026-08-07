@@ -8,6 +8,16 @@
 @import '@fontsource/ibm-plex-mono/latin-ext-400.css';
 @import '@fontsource/ibm-plex-mono/latin-500.css';
 @import '@fontsource/ibm-plex-mono/latin-ext-500.css';
+@import '@fontsource/space-grotesk/latin-400.css';
+@import '@fontsource/space-grotesk/latin-ext-400.css';
+@import '@fontsource/space-grotesk/latin-500.css';
+@import '@fontsource/space-grotesk/latin-ext-500.css';
+@import '@fontsource/space-grotesk/latin-600.css';
+@import '@fontsource/space-grotesk/latin-ext-600.css';
+@import '@fontsource/space-mono/latin-400.css';
+@import '@fontsource/space-mono/latin-ext-400.css';
+@import '@fontsource/space-mono/latin-700.css';
+@import '@fontsource/space-mono/latin-ext-700.css';
 
 :root {
   --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
@@ -18,7 +28,7 @@
   --color-mesh: #565b60;
   --color-mesh-border: #3a3e42;
   --color-text: #f1efe9;
-  --color-text-secondary: #b3a99c;
+  --color-text-secondary: #c4bcaf;
   --color-amber: #ff9d3d;
   --color-amber-dim: #a8672a;
 
@@ -34,6 +44,28 @@
   --measure: 68ch;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Second world: an observatory oscilloscope bank. Same tokens, different
+   values — most components retheme automatically because they consume
+   these custom properties rather than hard-coded colors. --color-amber
+   keeps its name but carries the scope world's cyan trace color; the name
+   is the established "single accent" token, not a literal color claim. */
+[data-theme='scope'] {
+  --font-sans: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, monospace;
+
+  --color-chassis: #050b0d;
+  --color-plate: #0a1518;
+  --color-mesh: #3f5a5e;
+  --color-mesh-border: #1c2e31;
+  --color-text: #eaf6f7;
+  --color-text-secondary: #a3c6ca;
+  --color-amber: #4dd8e6;
+  --color-amber-dim: #1f7a85;
+
+  --radius-sm: 3px;
+  --radius-md: 6px;
 }
 
 *,
@@ -596,4 +628,119 @@ a {
 .footer__links {
   display: flex;
   gap: 0.6rem;
+}
+
+/* ---------- World toggle ---------- */
+
+.world-toggle {
+  display: inline-flex;
+  border: 1px solid var(--color-mesh-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  flex: none;
+}
+
+.world-toggle__option {
+  padding: 0.5rem 0.8rem;
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  border: none;
+  background: var(--color-plate);
+  color: var(--color-text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.15s var(--ease-out-expo), background-color 0.15s var(--ease-out-expo);
+}
+
+.world-toggle__option + .world-toggle__option {
+  border-left: 1px solid var(--color-mesh-border);
+}
+
+.world-toggle__option:hover {
+  color: var(--color-text);
+}
+
+.world-toggle__option[aria-pressed='true'] {
+  background: var(--color-amber);
+  color: var(--color-chassis);
+}
+
+/* ---------- Scope world: graticule texture + trace signature ---------- */
+
+[data-theme='scope'] .job,
+[data-theme='scope'] .readout,
+[data-theme='scope'] .placeholder {
+  background-color: var(--color-plate);
+  background-image:
+    repeating-linear-gradient(0deg, color-mix(in srgb, var(--color-mesh-border) 55%, transparent) 0 1px, transparent 1px 20px),
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--color-mesh-border) 55%, transparent) 0 1px, transparent 1px 20px);
+}
+
+[data-theme='scope'] .world-toggle__option[aria-pressed='true'] {
+  color: var(--color-chassis);
+}
+
+.trace-screen {
+  position: relative;
+  padding: var(--space-sm);
+  background: var(--color-plate);
+  border: 1px solid var(--color-mesh-border);
+  border-radius: var(--radius-md);
+  background-image:
+    repeating-linear-gradient(0deg, color-mix(in srgb, var(--color-mesh-border) 55%, transparent) 0 1px, transparent 1px 15px),
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--color-mesh-border) 55%, transparent) 0 1px, transparent 1px 15px);
+}
+
+.trace-screen svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.trace-screen path {
+  fill: none;
+  stroke: var(--color-amber);
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 3px var(--color-amber));
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  animation: trace-draw 1.1s var(--ease-out-expo) forwards;
+}
+
+.trace-screen[data-delay='1'] path {
+  animation-delay: 0.12s;
+}
+.trace-screen[data-delay='2'] path {
+  animation-delay: 0.24s;
+}
+
+@keyframes trace-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trace-screen path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+.trace-screen__label {
+  margin-top: 0.35rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
 }

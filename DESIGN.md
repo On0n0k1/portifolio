@@ -2,91 +2,93 @@
 
 ---
 name: Lucas Lemos — Portfolio
-description: A lab-instrument panel of quantified engineering proof — glowing nixie-tube digit readouts for a distributed-systems and cryptography engineer.
+description: An epic-fantasy RPG interface — built on the licensed Epic Fantasy RPG UI Kit — presenting a distributed-systems and cryptography engineer's résumé as an adventurer's record.
 ---
 
 # Design System: Lucas Lemos — Portfolio
 
 ## Overview
 
-**Creative North Star: "The Instrument Panel"**
+**Creative North Star: "The Adventurer's Record"**
 
-The site is a bank of laboratory measuring instruments, not a résumé wearing a theme. Every quantified claim in Lucas's career — 60% latency reduction, 2,000 requests/second, 1M+ events/day, 40% load reduction — is rendered as a glowing amber nixie-tube digit readout mounted on a blackened-steel instrument chassis. The metaphor was chosen specifically because it fits the evidence: the résumé is unusually stat-dense, and PRODUCT.md's own operating principle is that a recruiter skims for hard numbers in under a minute. This world makes the numbers the interface itself, rather than decorating them.
+The site borrows its visual grammar directly from a licensed commercial game-UI asset pack (the "Epic Fantasy RPG UI Kit"): deep navy grounds, sampled gold trim (`#dab16d`, taken by pixel-sampling the kit's own mockups), diagonally cut panel corners, and inscribed small-caps labels. Section content and structure stay exactly as the résumé reads — Summary, Experience, Projects, Skills, Education, Contact — the user explicitly chose the visual skin over renaming sections into game-menu metaphors (Champions/Quests/Inventory).
 
-It explicitly rejects the two ruts common to engineer portfolios: the neon hacker-terminal/glyph-rain cliché, and the generic flat minimalist-resume template. Nothing here is neon or cyberpunk — the register is vintage scientific instrumentation: matte blackened steel, engraved panel labels, rivets and hairline mesh grille texture, warm amber glow (not pink/purple neon).
+This world replaces the original "Instrument Panel" nixie-tube world at the user's explicit request; the old world's evidence (amber glow, engraved panel labels) is superseded, not blended in — no split-the-difference polish on the discarded look.
 
 **Key Characteristics:**
-- Quantified claims are physical instrument readouts, not styled text.
-- One warm amber accent against near-black matte steel; no gradients, no glossy neon.
-- Sections are "banks" on the panel — distinct and navigable, not one undifferentiated scroll.
-- Depth comes from glow, not drop shadows: the chassis stays flat, light does the work.
-- Understated by the user's explicit request: precise and quiet, not a loud gimmick.
+- Deep navy ground, single sampled-gold accent — restrained relative to the kit's own busier mockups, matching the user's earlier preference for understatement.
+- Diagonally cut top-left/bottom-right panel corners (`--cut` token) — the kit's authentic panel silhouette, not a rounded-card default.
+- Cinzel for display/headings, Alegreya for body prose, Alegreya SC for inscribed small-caps labels and data — a real font substitution for the kit's uninstallable custom face (AvQest), chosen for matching character, not just closest-fallback.
+- Corner ornaments are actual cropped kit assets (used under confirmed license), not a recreation.
 
-### Second world: the Scope toggle
+### Licensing note
 
-A "Panel / Scope" toggle in the nav (top of page) switches the whole site into a second committed world: an observatory oscilloscope bank. Same content and layout topology, different register — cool near-black ground, cyan trace-glow accent instead of amber, Space Grotesk/Space Mono instead of IBM Plex, a fine graticule-grid texture on panel surfaces, and larger 3–6px machined radii evoking CRT glass. Its signature moment replaces the hero's nixie digit readouts with hand-drawn oscilloscope trace paths (SVG, stroke-draw animation) — a genuine interaction/rendering difference from the Panel world's digits, not a recolor. Full token values live in `src/index.css` under `[data-theme='scope']`, with inline comments explaining the reuse of token names across both worlds.
+Two corner-ornament PNGs were cropped from the kit's `PANEL/00.png` with Pillow (`src/assets/rpg/corner-tl.png`, `corner-br.png`) and briefly used on the hero; the user found the result didn't work and asked to remove them for now, to reconsider later. The files are kept locally (unused, not currently imported) in case a different treatment is designed later. The user had confirmed the license permits public-repo use before they were committed.
 
-This file's token values below describe the default Panel world only; this is still a seed pending a `/impeccable document` rescan now that real implementation exists for both worlds.
+### Single world
+
+An earlier iteration briefly offered a second toggleable world (an observatory oscilloscope theme). The user decided against maintaining two worlds and asked to remove it; the site now commits fully to this one fantasy world, with no toggle and no `[data-theme]` variant in the CSS.
+
+This file's token values below describe the current implementation; this is still a seed pending a `/impeccable document` rescan now that real implementation exists.
 
 ## Colors
 
-Near-black matte steel ground; one warm amber glow accent used sparingly and only for live/lit states — restraint is what makes the glow read as real light rather than decoration.
+Sampled directly from the kit's own mockup screenshots (Python/Pillow pixel averaging), not eyeballed. Near-black navy ground; one gold accent used for headings, active states, and the primary contact action.
 
 ### Primary
-- **Nixie Amber** (`#ff9d3d`): The lit digit glow. Reserved for active data readouts, the primary contact action, and hover/focus states. Never used as a body text color or a large flat fill — its rarity is the point.
+- **Kit Gold** (`#dab16d`): Headings, active nav state, primary text accents, focus outline. Sampled from the kit's "SETTINGS" heading text.
 
 ### Neutral
-- **Chassis Black** (`#17191b`): Page ground, instrument housing.
-- **Panel Plate** (`#232629`): Card/section surfaces mounted on the chassis — one step lighter than the ground.
-- **Mesh Gray** (`#8a8f94`): Secondary chrome — labels, dividers, unlit digit tracks, hairline rules.
-- **Panel White** (`#f1efe9`): Primary reading text — a warm off-white, like engraved paint fill, never pure `#fff`.
+- **Chassis Navy** (`#050510`): Page ground.
+- **Panel Navy** (`#0d0e1f`): Card/section surfaces — one step lighter than the ground.
+- **Bronze Mesh** (`#6b5636`): Secondary chrome — dividers, unlit markers, hairline rules.
+- **Parchment White** (`#f0e9d8`): Primary reading text.
+- **Warm Tan** (`#c9bb98`): Secondary text (prose, org names, dates) — brightened once already at the user's request; re-verify before darkening.
 
 ### Named Rules
-**The One Glow Rule.** Amber only lights what is true and current: a live stat, the active nav bank, the primary CTA. A static decorative amber fill anywhere is a violation — every instance must be able to justify itself as "this is lit because it's true."
+**The Sampled Gold Rule.** Every gold value in this system traces back to a real pixel sampled from the licensed kit's mockups, not an invented "fantasy gold" guess — keeps the palette honest to its source material.
 
 ## Typography
 
-**Display/Label Font:** IBM Plex Sans (with system sans-serif fallback)
-**Body Font:** IBM Plex Sans
-**Data/Mono Font:** IBM Plex Mono
+**Display Font:** Cinzel (with Georgia, serif fallback)
+**Body Font:** Alegreya
+**Label/Data Font:** Alegreya SC
 
-**Character:** One engineered type family used two ways: Plex Sans reads as the engraved panel-label register (headers, nav, prose), Plex Mono is reserved for anything tabular or numeric — the digit readouts, dates, metrics — so numbers always look measured rather than typeset.
+**Character:** Cinzel substitutes for the kit's own uninstallable custom face (AvQest) on headings and nav/button labels — an epic, monumental register close to the source. Alegreya carries body prose (a literary serif built for paragraph legibility, unlike Cinzel). Alegreya SC's small-caps carries data/labels (dates, stats, nav mark), echoing the kit's own inscribed small-caps nav tabs.
 
 ### Hierarchy
-- **Display** (600 weight, clamp(2.25rem, 5vw, 4rem), tight line-height): Name/title panel plate in the hero bank.
-- **Headline** (600 weight, ~1.5rem): Section/bank titles, set in tracked uppercase like stamped panel caps.
-- **Body** (400 weight, ~1.05rem, 1.6 line-height, ~68ch max): Summary and experience prose.
-- **Data** (IBM Plex Mono, 500 weight, tabular figures): Every stat, date range, and metric — always monospaced so digit columns align like a real readout.
-- **Label** (Plex Sans, 500 weight, 0.75rem, uppercase, tracked): Small engraved captions under each readout.
+- **Display** (600 weight, clamp(2.25rem, 5vw, 4rem)): Name in the hero.
+- **Headline** (600 weight, ~0.85–1.15rem, uppercase tracked): Section labels and job/project titles, in Cinzel.
+- **Body** (400 weight, ~1.05rem, 1.6 line-height, ~68ch max): Summary and experience prose, in Alegreya.
+- **Data** (Alegreya SC, 500 weight, tabular figures): Every stat, date range, and metric.
 
 ### Named Rules
-**The Measured Numeral Rule.** Any digit that represents a real metric or date is set in Plex Mono with tabular figures, never in the body sans — the distinction between "prose" and "reading" must stay visible at a glance.
+**The Honest Substitute Rule.** AvQest isn't available as a self-hostable web font; Cinzel was chosen for matching epic/monumental character, not as a lazy system-font fallback — the substitution is disclosed here, not silently absorbed.
 
 ## Layout
 
-The panel-bank grammar: each résumé section (Summary, Experience entries, Skills, Education) is a distinct instrument bank — its own bordered plate on the chassis, not a seamless scroll blend — matching the user's confirmed preference for distinct navigable sections over one continuous narrative. Generous chassis spacing separates banks (the gap between instruments on a real panel, not tight card-grid gutters). A persistent panel nav (styled as a row of labeled toggle/selector switches, not a conventional pill nav) lets a recruiter jump straight to a bank. Content width stays reading-comfortable (~68–75ch for prose banks); data-heavy banks (skills, stats) may run wider in a grid of readout tiles.
+Same panel-bank grammar as before: each résumé section is its own bordered plate, distinct and navigable rather than one continuous scroll. What changes is the panel silhouette — diagonally cut top-left and bottom-right corners (`clip-path`, driven by the `--cut` token) instead of a uniform small radius, matching the kit's actual panel shape. The hero's corner-ornament flourish was tried and pulled (see Licensing note); the hero currently carries no additional signature graphic beyond the cut corners and gold accent.
 
 ## Elevation & Depth
 
-Flat by default — the chassis and panel plates carry no drop shadows. Depth is conveyed entirely by the glow: a soft amber radial halo behind lit digits, and a faint inner highlight stroke on glass-like surfaces, mimicking a tube's glass envelope catching light. A panel plate is allowed one hairline border (Mesh Gray, 1px) to read as a distinct mounted unit; nothing else lifts off the chassis.
+Flat by default, matching the kit's own UI (no drop-shadow card elevation). The hero stat readouts get a soft gold text-glow on reveal (`sigil-glow` — a smooth fade/scale-in, replacing the previous world's electrical flicker with something closer to an enchantment settling in) rather than a lifted/shadowed surface.
 
 ### Named Rules
-**The Flat-Chassis Rule.** No box-shadow anywhere except the amber glow halo itself. If something needs to feel important, light it — don't lift it.
+**The Cut, Not Rounded Rule.** Panels take a diagonal corner cut (`--cut`), never a large border-radius — pill/rounded shapes read as a different, unrelated world.
 
 ## Shapes
 
-Machined, not soft: small corner radii (2–4px) on panel plates, evoking cut/milled steel rather than a consumer app's pill-rounded cards. Circular or short-ellipse forms are reserved for the digit-tube motif itself (the readouts) — using that geometry elsewhere would dilute its meaning. Rivet or screw-head details (small filled circles) may mark panel corners as a recurring, restrained signature — never more than one per plate edge.
+Diagonally cut top-left/bottom-right corners on interactive and panel surfaces (buttons, nav switches, job/readout panels) via the shared `--cut` token. Diamond (45°-rotated square) markers replace the previous world's circular dot markers throughout — bank-label bullets, switch indicators, readout corner marks — matching the kit's recurring diamond motif.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** render every quantified résumé stat (percentages, throughput, dates) as a Plex Mono tabular readout, not inline prose.
-- **Do** keep the amber glow rare — it marks "this is live/true," and loses meaning if it decorates.
-- **Do** give each résumé section its own bordered panel-plate bank with a clear engraved-caps label.
-- **Do** keep the power-on/glow-in moment on the hero brief and quiet (a short warm-up flicker), matching the user's request for understatement, not a showpiece animation.
+- **Do** keep résumé section names in plain English (Summary, Experience, Skills…) — the user chose visual skin over game-menu relabeling.
+- **Do** trace every gold/navy value back to a real sampled pixel from the kit's mockups when adding new colors.
+- **Do** keep any future corner-ornament treatment hero-only; don't spread it across every panel.
+- **Do** disclose any font substitution for AvQest rather than silently picking the closest system font.
 
 ### Don't:
-- **Don't** use neon pink/purple, scanlines, or glyph-rain — this is a vintage lab instrument, not cyberpunk.
-- **Don't** use drop-shadow card elevation; depth is glow only.
-- **Don't** round corners past a machined 2–4px; pill shapes belong to a different world.
-- **Don't** invent unverified metrics or testimonials to fill a readout — an empty or placeholder bank (e.g. Projects) stays honestly labeled as a placeholder rather than faked with invented numbers.
+- **Don't** invent RPG mechanics or gamified copy (levels, currency, quests) beyond the visual skin — PRODUCT.md's claims stay factual.
+- **Don't** round panel corners; the cut-corner silhouette is this world's signature.
+- **Don't** re-embed more of the kit's raw PNG assets without re-confirming license scope for each new use.

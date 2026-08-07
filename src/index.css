@@ -23,7 +23,7 @@
   --font-mono: 'Alegreya SC', 'Alegreya', Georgia, serif;
 
   --color-chassis: #050510;
-  --color-plate: #0d0e1f;
+  --color-plate: #01000f;
   --color-mesh: #6b5636;
   --color-mesh-border: #3a2e18;
   --color-text: #f0e9d8;
@@ -80,6 +80,27 @@ body {
   font-size: 1.05rem;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Shared 9-slice frame from the licensed Epic Fantasy RPG UI Kit
+   (src/assets/rpg/panel-frame.png — the untouched original PANEL/00.png,
+   byte-identical to the source; a shadow-stripped derivative is kept at
+   panel-frame-processed.png but unused, at the user's direction). Slice
+   values are asymmetric (top/right/bottom/left) to match the source's own
+   uneven margins around its diagonal-cut corners. The `fill` keyword makes
+   the image's own sliced middle paint the padding-box too, so the panel's
+   entire background is the source art — no separate CSS background-color.
+   No border-radius/clip-path needed — the source's own alpha-transparent
+   diagonal cut defines the corner shape. */
+.kit-frame {
+  border-width: 24px;
+  border-style: solid;
+  border-color: transparent;
+  border-image-source: url('./assets/rpg/panel-frame.png');
+  border-image-slice: 140 210 200 190 fill;
+  border-image-width: 24px;
+  border-image-outset: 0;
+  border-image-repeat: stretch;
 }
 
 h1,
@@ -364,18 +385,7 @@ a {
 
 .readout {
   position: relative;
-  padding: var(--space-md) var(--space-sm);
-  background: var(--color-plate);
-  border: 1px solid var(--color-mesh-border);
-  border-radius: var(--radius-md);
-  clip-path: polygon(
-    var(--cut) 0,
-    100% 0,
-    100% calc(100% - var(--cut)),
-    calc(100% - var(--cut)) 100%,
-    0 100%,
-    0 var(--cut)
-  );
+  padding: var(--space-sm);
   overflow: hidden;
 }
 
@@ -433,18 +443,7 @@ a {
 /* ---------- Experience ---------- */
 
 .job {
-  padding: var(--space-md);
-  background: var(--color-plate);
-  border: 1px solid var(--color-mesh-border);
-  border-radius: var(--radius-md);
-  clip-path: polygon(
-    var(--cut) 0,
-    100% 0,
-    100% calc(100% - var(--cut)),
-    calc(100% - var(--cut)) 100%,
-    0 100%,
-    0 var(--cut)
-  );
+  padding: var(--space-sm);
 }
 
 .job + .job {
@@ -489,6 +488,25 @@ a {
   white-space: nowrap;
 }
 
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+}
+
+.project-tag {
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--color-mesh-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-chassis);
+  color: var(--color-text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
 .project__description {
   margin-top: var(--space-sm);
   font-size: 0.95rem;
@@ -527,18 +545,7 @@ a {
 }
 
 .talent-branch {
-  padding: var(--space-md);
-  background: var(--color-plate);
-  border: 1px solid var(--color-mesh-border);
-  border-radius: var(--radius-md);
-  clip-path: polygon(
-    var(--cut) 0,
-    100% 0,
-    100% calc(100% - var(--cut)),
-    calc(100% - var(--cut)) 100%,
-    0 100%,
-    0 var(--cut)
-  );
+  padding: var(--space-sm);
 }
 
 .talent-branch__title {

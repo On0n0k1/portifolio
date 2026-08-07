@@ -129,7 +129,7 @@ const skillGroups: Record<string, string[]> = {
 type ProjectEntry = {
   title: string
   repo: string
-  stack: string
+  tags: string[]
   description: string
   badge?: string
 }
@@ -138,14 +138,14 @@ const projects: ProjectEntry[] = [
   {
     title: 'Event-Driven Microservices Platform',
     repo: 'go-event-platform',
-    stack: 'Go',
+    tags: ['Go', 'gRPC', 'mTLS', 'Redis', 'NATS', 'OpenTelemetry', 'Prometheus', 'Grafana'],
     description:
       'An API gateway routes to an order service, which reserves stock from a Redis-cached inventory service over mutually-authenticated TLS gRPC and publishes an event that notification and analytics services consume asynchronously over NATS — traced end to end with OpenTelemetry into Jaeger, with Prometheus metrics on a provisioned Grafana dashboard.',
   },
   {
     title: 'NEAR Smart Contract Tutorial',
     repo: 'Tutorial_NEAR_Rust',
-    stack: 'Rust',
+    tags: ['Rust', 'NEAR Protocol', 'WebAssembly', 'Smart Contracts', 'Technical Writing'],
     description:
       'A step-by-step tutorial for building NEAR smart contracts in Rust, published in Portuguese, English, and Spanish.',
     badge: '★ 18',
@@ -153,7 +153,7 @@ const projects: ProjectEntry[] = [
   {
     title: 'On-Chain Chess for NEAR',
     repo: 'NCD.L1--Chess',
-    stack: 'Rust',
+    tags: ['Rust', 'NEAR Protocol', 'WebAssembly', 'Smart Contracts'],
     description:
       "A chess game deployed to the NEAR network. It earned “Exceptional” level in the NEAR Certified Developer program in 2021.",
     badge: 'NCD: Exceptional',
@@ -225,7 +225,7 @@ function TalentTree({ groups }: { groups: Record<string, string[]> }) {
   return (
     <div className="talent-tree">
       {Object.entries(groups).map(([group, items]) => (
-        <div className="talent-branch" key={group}>
+        <div className="talent-branch kit-frame" key={group}>
           <h3 className="talent-branch__title">{group}</h3>
           <ul className="talent-branch__list">
             {items.map((item) => (
@@ -303,7 +303,7 @@ function App() {
 
           <div className="readouts readouts--separated" role="group" aria-label="Career metrics">
             {heroReadouts.map((r, i) => (
-              <div className="readout" key={r.label}>
+              <div className="readout kit-frame" key={r.label}>
                 <p className="readout__digits" data-delay={String(i)}>
                   {r.digits}
                 </p>
@@ -336,7 +336,7 @@ function App() {
               Experience
             </h2>
             {experience.map((entry) => (
-              <article className="job" key={`${entry.org}-${entry.period}`}>
+              <article className="job kit-frame" key={`${entry.org}-${entry.period}`}>
                 <div className="job__header">
                   <div>
                     <h3 className="job__role">{entry.role}</h3>
@@ -362,13 +362,17 @@ function App() {
               Projects
             </h2>
             {projects.map((project) => (
-              <article className="job project" key={project.repo}>
+              <article className="job project kit-frame" key={project.repo}>
                 <div className="job__header">
-                  <div>
-                    <h3 className="job__role">{project.title}</h3>
-                    <p className="job__org">{project.stack}</p>
-                  </div>
+                  <h3 className="job__role">{project.title}</h3>
                   {project.badge && <p className="project__badge stat">{project.badge}</p>}
+                </div>
+                <div className="project-tags">
+                  {project.tags.map((tag) => (
+                    <span className="project-tag" key={tag}>
+                      {tag}
+                    </span>
+                  ))}
                 </div>
                 <p className="prose project__description">{project.description}</p>
                 <a

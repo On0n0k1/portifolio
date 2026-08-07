@@ -1,0 +1,13 @@
+/* Minimal reset only. Visual design is not decided yet — see PRODUCT.md
+   and run the impeccable skill's new-work flow before styling this. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}

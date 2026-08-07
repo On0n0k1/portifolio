@@ -93,12 +93,12 @@ body {
    No border-radius/clip-path needed — the source's own alpha-transparent
    diagonal cut defines the corner shape. */
 .kit-frame {
-  border-width: 24px;
+  border-width: 72px;
   border-style: solid;
   border-color: transparent;
   border-image-source: url('./assets/rpg/panel-frame.png');
   border-image-slice: 140 210 200 190 fill;
-  border-image-width: 24px;
+  border-image-width: 72px;
   border-image-outset: 0;
   border-image-repeat: stretch;
 }
@@ -385,7 +385,7 @@ a {
 
 .readout {
   position: relative;
-  padding: var(--space-sm);
+  padding: var(--space-xs);
   overflow: hidden;
 }
 
@@ -443,7 +443,7 @@ a {
 /* ---------- Experience ---------- */
 
 .job {
-  padding: var(--space-sm);
+  padding: var(--space-xs);
 }
 
 .job + .job {
@@ -545,7 +545,7 @@ a {
 }
 
 .talent-branch {
-  padding: var(--space-sm);
+  padding: var(--space-xs);
 }
 
 .talent-branch__title {

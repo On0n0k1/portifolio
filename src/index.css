@@ -246,14 +246,9 @@ a {
   display: none;
 }
 
-.switch {
+.nav-bar {
   display: inline-flex;
-  align-items: center;
-  gap: 0.5em;
-  min-height: 2.75rem;
-  padding: 0.4rem 0.9rem;
   border: 1px solid var(--color-mesh-border);
-  border-radius: var(--radius-md);
   clip-path: polygon(
     var(--cut) 0,
     100% 0,
@@ -263,38 +258,33 @@ a {
     0 var(--cut)
   );
   background: var(--color-plate);
-  color: var(--color-text-secondary);
+  overflow: hidden;
+}
+
+.nav-bar__item {
+  padding: 0.5rem 0.85rem;
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
   font-family: var(--font-display);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border-left: 1px solid var(--color-mesh-border);
   white-space: nowrap;
-  cursor: pointer;
-  transition: color 0.15s var(--ease-out-expo), border-color 0.15s var(--ease-out-expo);
+  box-shadow: inset 0 -2px 0 0 transparent;
+  transition: color 0.15s var(--ease-out-expo), box-shadow 0.15s var(--ease-out-expo);
 }
 
-.switch__throw {
-  width: 6px;
-  height: 6px;
-  transform: rotate(45deg);
-  background: var(--color-mesh);
-  transition: background 0.15s var(--ease-out-expo), box-shadow 0.15s var(--ease-out-expo);
+.nav-bar__item:first-child {
+  border-left: none;
 }
 
-.switch:hover {
-  color: var(--color-text);
-  border-color: var(--color-mesh);
-}
-
-.switch[aria-current='true'] {
+.nav-bar__item[aria-current='true'] {
   color: var(--color-amber);
-  border-color: var(--color-amber-dim);
-}
-
-.switch[aria-current='true'] .switch__throw {
-  background: var(--color-amber);
-  box-shadow: 0 0 6px 1px color-mix(in srgb, var(--color-amber) 70%, transparent);
+  box-shadow: inset 0 -2px 0 0 var(--color-amber);
 }
 
 /* ---------- Hero ---------- */
@@ -371,6 +361,37 @@ a {
   fill: none;
 }
 
+/* Hero-only: joins the 3 separate contact-link pills into one divided bar,
+   matching the nav-bar pattern. Scoped to a modifier class rather than the
+   base .contact-link/.hero__contact rules, which stay shared by the Contact
+   section and footer instances of the same links. */
+.hero__contact--joined {
+  display: inline-flex;
+  border: 1px solid var(--color-mesh-border);
+  clip-path: polygon(
+    var(--cut) 0,
+    100% 0,
+    100% calc(100% - var(--cut)),
+    calc(100% - var(--cut)) 100%,
+    0 100%,
+    0 var(--cut)
+  );
+  background: var(--color-plate);
+  overflow: hidden;
+}
+
+.hero__contact--joined .contact-link {
+  border: none;
+  clip-path: none;
+  border-radius: 0;
+  background: none;
+  border-left: 1px solid var(--color-mesh-border);
+}
+
+.hero__contact--joined .contact-link:first-child {
+  border-left: none;
+}
+
 /* ---------- Readout bank (fantasy: engraved stat plaques) ---------- */
 
 .readouts {
@@ -387,17 +408,6 @@ a {
   position: relative;
   padding: var(--space-xs);
   overflow: hidden;
-}
-
-.readout::before {
-  content: '';
-  position: absolute;
-  top: 0.7rem;
-  right: 0.7rem;
-  width: 6px;
-  height: 6px;
-  transform: rotate(45deg);
-  background: var(--color-mesh);
 }
 
 .readout__digits {

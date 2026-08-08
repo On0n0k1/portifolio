@@ -273,15 +273,14 @@ function App() {
       </a>
       <nav className="nav" aria-label="Primary">
         <span className="nav__mark">LUCAS LEMOS</span>
-        <div className="nav__switches">
+        <div className="nav-bar" role="group" aria-label="Section navigation">
           {navSections.map((section) => (
             <a
               key={section.id}
-              className="switch"
+              className="nav-bar__item"
               href={`#${section.id}`}
               aria-current={activeId === section.id}
             >
-              <span className="switch__throw" />
               {section.label}
             </a>
           ))}
@@ -296,7 +295,7 @@ function App() {
               Senior Software Engineer — Rust, Distributed Systems &amp; Backend Infrastructure
             </p>
             <p className="hero__location">Divinópolis, Minas Gerais, Brazil</p>
-            <div className="hero__contact">
+            <div className="hero__contact hero__contact--joined">
               <ContactLinks />
             </div>
           </div>

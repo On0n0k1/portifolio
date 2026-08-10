@@ -96,6 +96,8 @@ const skillGroups: Record<string, string[]> = {
     'Kubernetes',
     'Terraform',
     'Linux (production)',
+    'GitHub Actions',
+    'GitLab CI/CD',
   ],
   'Blockchain & Cryptography': [
     'Solana',

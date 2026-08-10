@@ -55,6 +55,31 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
+  scrollbar-color: var(--color-amber-dim) var(--color-chassis);
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-chassis);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-amber-dim);
+  border: 2px solid var(--color-chassis);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-amber);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--color-chassis);
 }
 
 @media (prefers-reduced-motion: reduce) {

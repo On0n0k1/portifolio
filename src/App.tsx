@@ -177,8 +177,8 @@ const languages = [
   { name: 'Japanese', level: 'Beginner', pips: 1 },
 ]
 
-const navSections = [
-  { id: 'summary', label: 'Summary' },
+const navSections: { id: string; label: string; href?: string }[] = [
+  { id: 'summary', label: 'Home', href: '#' },
   { id: 'experience', label: 'Experience' },
   { id: 'projects', label: 'Projects' },
   { id: 'skills', label: 'Skills' },
@@ -311,7 +311,7 @@ function App() {
               <a
                 key={section.id}
                 className="nav-bar__item"
-                href={`#${section.id}`}
+                href={section.href ?? `#${section.id}`}
                 aria-current={activeId === section.id}
               >
                 {section.label}

@@ -357,7 +357,7 @@ function App() {
         <main id="main-content">
           <section id="summary" className="bank" aria-label="Summary">
             <div className="bank__inner">
-              <div className="prose prose--lead">
+              <div className="prose prose--lead prose--centered">
                 <p>
                   {withStats('I like to find the most optimal and effective ways for machines to solve our problems.')}
                 </p>

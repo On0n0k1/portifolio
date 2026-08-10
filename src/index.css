@@ -262,6 +262,13 @@ a {
   line-height: 1.5;
 }
 
+/* Summary-only: the CTA text in Contact stays left-aligned since the
+   right-aligned links sit right below it and would otherwise mismatch. */
+.prose--centered {
+  margin-inline: auto;
+  text-align: center;
+}
+
 /* ---------- Nav ---------- */
 
 .nav {

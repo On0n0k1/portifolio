@@ -249,12 +249,15 @@ a {
   font-size: 1.05rem;
 }
 
-.prose--summary {
-  padding: var(--space-xl) 0;
+/* Large statement treatment: works whether applied to a wrapper div around a
+   <p> (Summary) or directly on a bare <p> (Contact). */
+.prose--lead {
   max-width: 52rem;
+  padding: var(--space-lg) 0;
 }
 
-.prose--summary p {
+.prose--lead,
+.prose--lead p {
   font-size: clamp(1.3rem, 3vw, 1.75rem);
   line-height: 1.5;
 }

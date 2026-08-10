@@ -350,7 +350,7 @@ function App() {
         <main id="main-content">
           <section id="summary" className="bank" aria-label="Summary">
             <div className="bank__inner">
-              <div className="prose prose--summary">
+              <div className="prose prose--lead">
                 <p>
                   {withStats('I like to find the most optimal and effective ways for machines to solve our problems.')}
                 </p>
@@ -472,10 +472,7 @@ function App() {
               <h2 className="bank__label" id="contact-heading">
                 Contact
               </h2>
-              <p className="prose">
-                Open to senior Rust, distributed-systems, backend infrastructure, and blockchain roles — let&apos;s
-                talk.
-              </p>
+              <p className="prose prose--lead">Feel free to reach out for more information.</p>
               <div className="hero__contact hero__contact--joined hero__contact--right" style={{ marginTop: '1.25rem' }}>
                 <ContactLinks />
               </div>

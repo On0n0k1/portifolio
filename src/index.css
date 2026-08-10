@@ -371,10 +371,10 @@ a {
   fill: none;
 }
 
-/* Hero-only: joins the 3 separate contact-link pills into one divided bar,
-   matching the nav-bar pattern. Scoped to a modifier class rather than the
-   base .contact-link/.hero__contact rules, which stay shared by the Contact
-   section and footer instances of the same links. */
+/* Joins the 3 separate contact-link pills into one divided bar, matching the
+   nav-bar pattern. Used by the hero and Contact section; a modifier rather
+   than the base .contact-link/.hero__contact rules so any future bare usage
+   still gets the individual-pill treatment. */
 .hero__contact--joined {
   display: inline-flex;
   border: 1px solid var(--color-mesh-border);
@@ -398,6 +398,14 @@ a {
 
 .hero__contact--joined .contact-link:first-child {
   border-left: none;
+}
+
+/* Hero-only: centers the joined contact bar under the identity block
+   instead of hugging the left edge with the name/title/location above it. */
+.hero__contact--centered {
+  display: flex;
+  width: fit-content;
+  margin-inline: auto;
 }
 
 /* ---------- Readout bank (fantasy: engraved stat plaques) ---------- */
@@ -458,6 +466,19 @@ a {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-text-secondary);
+}
+
+.readout--centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.35rem;
+}
+
+.readout--centered .readout__label {
+  margin-top: 0;
 }
 
 /* ---------- Experience ---------- */
@@ -698,4 +719,9 @@ a {
   font-family: var(--font-mono);
   font-size: 0.78rem;
   color: var(--color-text-secondary);
+}
+
+.footer--centered-tight {
+  justify-content: center;
+  padding: var(--space-sm);
 }

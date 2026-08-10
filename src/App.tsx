@@ -298,14 +298,14 @@ function App() {
                 Senior Software Engineer — Rust, Distributed Systems &amp; Backend Infrastructure
               </p>
               <p className="hero__location">Divinópolis, Minas Gerais, Brazil</p>
-              <div className="hero__contact hero__contact--joined">
+              <div className="hero__contact hero__contact--joined hero__contact--centered">
                 <ContactLinks />
               </div>
             </div>
 
             <div className="readouts readouts--separated" role="group" aria-label="Career metrics">
               {heroReadouts.map((r, i) => (
-                <div className="readout kit-frame" key={r.label}>
+                <div className="readout kit-frame readout--centered" key={r.label}>
                   <p className="readout__digits" data-delay={String(i)}>
                     {r.digits}
                   </p>
@@ -443,14 +443,14 @@ function App() {
                 Contact
               </h2>
               <p className="prose">Open to senior Rust, distributed-systems, and backend infrastructure roles.</p>
-              <div className="hero__contact" style={{ marginTop: '1.25rem' }}>
+              <div className="hero__contact hero__contact--joined" style={{ marginTop: '1.25rem' }}>
                 <ContactLinks />
               </div>
             </div>
           </section>
         </main>
 
-        <footer className="footer">
+        <footer className="footer footer--centered-tight">
           <p className="footer__copy">© {new Date().getFullYear()} Lucas Lemos</p>
         </footer>
       </div>

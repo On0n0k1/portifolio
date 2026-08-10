@@ -61,6 +61,7 @@ html {
   html {
     scroll-behavior: auto;
   }
+
   /* The hero sigil-glow is the only authored motion; every value it animates
      toward is still shown, just without the reveal. Hover/focus color and
      border transitions stay — they're state feedback, not vestibular motion. */
@@ -80,6 +81,19 @@ body {
   font-size: 1.05rem;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Fixed full-viewport WebGL fog (Three.js + Vanta), sits behind all content.
+   Fixed rather than page-height: re-rendering a full multi-thousand-pixel
+   canvas on every scroll frame would be wasteful; a fixed atmospheric layer
+   reads as a full-page background without that cost. Falls back to the
+   solid --color-chassis body background when prefers-reduced-motion is set
+   (FogBackground skips mounting the effect) or before JS/WebGL is ready. */
+.fog-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* Shared 9-slice frame from the licensed Epic Fantasy RPG UI Kit
@@ -249,14 +263,12 @@ a {
 .nav-bar {
   display: inline-flex;
   border: 1px solid var(--color-mesh-border);
-  clip-path: polygon(
-    var(--cut) 0,
-    100% 0,
-    100% calc(100% - var(--cut)),
-    calc(100% - var(--cut)) 100%,
-    0 100%,
-    0 var(--cut)
-  );
+  clip-path: polygon(var(--cut) 0,
+      100% 0,
+      100% calc(100% - var(--cut)),
+      calc(100% - var(--cut)) 100%,
+      0 100%,
+      0 var(--cut));
   background: var(--color-plate);
   overflow: hidden;
 }
@@ -331,14 +343,12 @@ a {
   padding: 0.55rem 1rem;
   border: 1px solid var(--color-mesh-border);
   border-radius: var(--radius-md);
-  clip-path: polygon(
-    var(--cut) 0,
-    100% 0,
-    100% calc(100% - var(--cut)),
-    calc(100% - var(--cut)) 100%,
-    0 100%,
-    0 var(--cut)
-  );
+  clip-path: polygon(var(--cut) 0,
+      100% 0,
+      100% calc(100% - var(--cut)),
+      calc(100% - var(--cut)) 100%,
+      0 100%,
+      0 var(--cut));
   background: var(--color-plate);
   color: var(--color-text);
   font-family: var(--font-display);
@@ -368,14 +378,12 @@ a {
 .hero__contact--joined {
   display: inline-flex;
   border: 1px solid var(--color-mesh-border);
-  clip-path: polygon(
-    var(--cut) 0,
-    100% 0,
-    100% calc(100% - var(--cut)),
-    calc(100% - var(--cut)) 100%,
-    0 100%,
-    0 var(--cut)
-  );
+  clip-path: polygon(var(--cut) 0,
+      100% 0,
+      100% calc(100% - var(--cut)),
+      calc(100% - var(--cut)) 100%,
+      0 100%,
+      0 var(--cut));
   background: var(--color-plate);
   overflow: hidden;
 }
@@ -423,6 +431,7 @@ a {
 .readout__digits[data-delay='1'] {
   animation-delay: 0.1s;
 }
+
 .readout__digits[data-delay='2'] {
   animation-delay: 0.2s;
 }
@@ -433,6 +442,7 @@ a {
     transform: translateY(4px) scale(0.97);
     text-shadow: 0 0 0 transparent;
   }
+
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -456,7 +466,7 @@ a {
   padding: var(--space-xs);
 }
 
-.job + .job {
+.job+.job {
   margin-top: var(--space-sm);
 }
 
@@ -689,9 +699,3 @@ a {
   font-size: 0.78rem;
   color: var(--color-text-secondary);
 }
-
-.footer__links {
-  display: flex;
-  gap: 0.6rem;
-}
-

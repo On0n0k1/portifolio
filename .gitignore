@@ -27,3 +27,7 @@ Lucas_Lemos_CV.pdf
 # Full purchased UI kit (270+ files) — only the two derived crops actually
 # used by the site live in src/assets/rpg/ and are tracked normally.
 Epic Fantasy RPG UI Kit - Ultimate Game Interface Assets/
+
+# Original 13MB background source — the optimized 29KB WebP derivative
+# actually used by the site lives in src/assets/rpg/page-background.webp.
+/Background.png

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { GitHubIcon, LinkedInIcon, MailIcon } from './icons'
+import { FogBackground } from './components/FogBackground'
 
 type ExperienceEntry = {
   role: string
@@ -267,193 +268,193 @@ function App() {
   const activeId = useActiveSection(sectionIds)
 
   return (
-    <div className="chassis">
-      <a className="skip-link" href="#main-content">
-        Skip to content
-      </a>
-      <nav className="nav" aria-label="Primary">
-        <span className="nav__mark">LUCAS LEMOS</span>
-        <div className="nav-bar" role="group" aria-label="Section navigation">
-          {navSections.map((section) => (
-            <a
-              key={section.id}
-              className="nav-bar__item"
-              href={`#${section.id}`}
-              aria-current={activeId === section.id}
-            >
-              {section.label}
-            </a>
-          ))}
-        </div>
-      </nav>
-
-      <header className="bank hero">
-        <div className="bank__inner">
-          <div className="hero__identity">
-            <h1>Lucas Lemos</h1>
-            <p className="hero__title">
-              Senior Software Engineer — Rust, Distributed Systems &amp; Backend Infrastructure
-            </p>
-            <p className="hero__location">Divinópolis, Minas Gerais, Brazil</p>
-            <div className="hero__contact hero__contact--joined">
-              <ContactLinks />
-            </div>
-          </div>
-
-          <div className="readouts readouts--separated" role="group" aria-label="Career metrics">
-            {heroReadouts.map((r, i) => (
-              <div className="readout kit-frame" key={r.label}>
-                <p className="readout__digits" data-delay={String(i)}>
-                  {r.digits}
-                </p>
-                <p className="readout__label">{r.label}</p>
-              </div>
+    <>
+      <FogBackground />
+      <div className="chassis">
+          <a className="skip-link" href="#main-content">
+            Skip to content
+          </a>
+        <nav className="nav" aria-label="Primary">
+          <span className="nav__mark">LUCAS LEMOS</span>
+          <div className="nav-bar" role="group" aria-label="Section navigation">
+            {navSections.map((section) => (
+              <a
+                key={section.id}
+                className="nav-bar__item"
+                href={`#${section.id}`}
+                aria-current={activeId === section.id}
+              >
+                {section.label}
+              </a>
             ))}
           </div>
-        </div>
-      </header>
+        </nav>
 
-      <main id="main-content">
-        <section id="summary" className="bank" aria-labelledby="summary-heading">
+        <header className="bank hero">
           <div className="bank__inner">
-            <h2 className="bank__label" id="summary-heading">
-              Summary
-            </h2>
-            <div className="prose">
-              <p>
-                {withStats(
-                  'Senior software engineer with 6+ years specializing in Rust and distributed systems — building low-latency backend services that process 1M+ events/day at 2,000 requests/second, plus cryptography, blockchain, and technical leadership experience.',
-                )}
+            <div className="hero__identity">
+              <h1>Lucas Lemos</h1>
+              <p className="hero__title">
+                Senior Software Engineer — Rust, Distributed Systems &amp; Backend Infrastructure
               </p>
+              <p className="hero__location">Divinópolis, Minas Gerais, Brazil</p>
+              <div className="hero__contact hero__contact--joined">
+                <ContactLinks />
+              </div>
+            </div>
+
+            <div className="readouts readouts--separated" role="group" aria-label="Career metrics">
+              {heroReadouts.map((r, i) => (
+                <div className="readout kit-frame" key={r.label}>
+                  <p className="readout__digits" data-delay={String(i)}>
+                    {r.digits}
+                  </p>
+                  <p className="readout__label">{r.label}</p>
+                </div>
+              ))}
             </div>
           </div>
-        </section>
+        </header>
 
-        <section id="experience" className="bank bank--lit" aria-labelledby="experience-heading">
-          <div className="bank__inner">
-            <h2 className="bank__label" id="experience-heading">
-              Experience
-            </h2>
-            {experience.map((entry) => (
-              <article className="job kit-frame" key={`${entry.org}-${entry.period}`}>
-                <div className="job__header">
-                  <div>
-                    <h3 className="job__role">{entry.role}</h3>
-                    <p className="job__org">
-                      {entry.org} — {entry.location}
-                    </p>
+        <main id="main-content">
+          <section id="summary" className="bank" aria-labelledby="summary-heading">
+            <div className="bank__inner">
+              <h2 className="bank__label" id="summary-heading">
+                Summary
+              </h2>
+              <div className="prose">
+                <p>
+                  {withStats(
+                    'Senior software engineer with 6+ years specializing in Rust and distributed systems — building low-latency backend services that process 1M+ events/day at 2,000 requests/second, plus cryptography, blockchain, and technical leadership experience.',
+                  )}
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section id="experience" className="bank bank--lit" aria-labelledby="experience-heading">
+            <div className="bank__inner">
+              <h2 className="bank__label" id="experience-heading">
+                Experience
+              </h2>
+              {experience.map((entry) => (
+                <article className="job kit-frame" key={`${entry.org}-${entry.period}`}>
+                  <div className="job__header">
+                    <div>
+                      <h3 className="job__role">{entry.role}</h3>
+                      <p className="job__org">
+                        {entry.org} — {entry.location}
+                      </p>
+                    </div>
+                    <p className="job__period">{entry.period}</p>
                   </div>
-                  <p className="job__period">{entry.period}</p>
-                </div>
-                <ul className="job__highlights">
-                  {entry.highlights.map((point) => (
-                    <li key={point}>{withStats(point)}</li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="projects" className="bank bank--lit" aria-labelledby="projects-heading">
-          <div className="bank__inner">
-            <h2 className="bank__label" id="projects-heading">
-              Projects
-            </h2>
-            {projects.map((project) => (
-              <article className="job project kit-frame" key={project.repo}>
-                <div className="job__header">
-                  <h3 className="job__role">{project.title}</h3>
-                  {project.badge && <p className="project__badge stat">{project.badge}</p>}
-                </div>
-                <div className="project-tags">
-                  {project.tags.map((tag) => (
-                    <span className="project-tag" key={tag}>
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <p className="prose project__description">{project.description}</p>
-                <a
-                  className="contact-link project__link"
-                  href={`https://github.com/On0n0k1/${project.repo}`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <GitHubIcon /> View source
-                </a>
-              </article>
-            ))}
-            <div className="placeholder">
-              <p className="placeholder__label">More banks coming online</p>
-              <p>Additional case studies are being written up. Reach out for a walkthrough of recent work.</p>
+                  <ul className="job__highlights">
+                    {entry.highlights.map((point) => (
+                      <li key={point}>{withStats(point)}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section id="skills" className="bank bank--lit" aria-labelledby="skills-heading">
-          <div className="bank__inner">
-            <h2 className="bank__label" id="skills-heading">
-              Skills
-            </h2>
-            <TalentTree groups={skillGroups} />
-          </div>
-        </section>
-
-        <section id="education" className="bank" aria-labelledby="education-heading">
-          <div className="bank__inner">
-            <h2 className="bank__label" id="education-heading">
-              Education &amp; Languages
-            </h2>
-            <div className="dual">
-              <div>
-                <div className="record">
-                  <p className="record__title">Bachelor&apos;s in Computer Science</p>
-                  <p className="record__meta">Faculdade Anhanguera, Divinópolis — 2018–2022</p>
-                </div>
-                <div className="record">
-                  <p className="record__title">Associate&apos;s Degree, Industrial Electronics Technology</p>
-                  <p className="record__meta">SENAI Aniello Greco, Divinópolis — 2013–2014</p>
-                </div>
-              </div>
-              <div>
-                <div className="record">
-                  <p className="record__title">English</p>
-                  <p className="record__level">Fluent</p>
-                </div>
-                <div className="record">
-                  <p className="record__title">Portuguese</p>
-                  <p className="record__level">Fluent</p>
-                </div>
-                <div className="record">
-                  <p className="record__title">Japanese</p>
-                  <p className="record__level">Beginner</p>
-                </div>
+          <section id="projects" className="bank bank--lit" aria-labelledby="projects-heading">
+            <div className="bank__inner">
+              <h2 className="bank__label" id="projects-heading">
+                Projects
+              </h2>
+              {projects.map((project) => (
+                <article className="job project kit-frame" key={project.repo}>
+                  <div className="job__header">
+                    <h3 className="job__role">{project.title}</h3>
+                    {project.badge && <p className="project__badge stat">{project.badge}</p>}
+                  </div>
+                  <div className="project-tags">
+                    {project.tags.map((tag) => (
+                      <span className="project-tag" key={tag}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <p className="prose project__description">{project.description}</p>
+                  <a
+                    className="contact-link project__link"
+                    href={`https://github.com/On0n0k1/${project.repo}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <GitHubIcon /> View source
+                  </a>
+                </article>
+              ))}
+              <div className="placeholder">
+                <p className="placeholder__label">More banks coming online</p>
+                <p>Additional case studies are being written up. Reach out for a walkthrough of recent work.</p>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section id="contact" className="bank bank--lit" aria-labelledby="contact-heading">
-          <div className="bank__inner">
-            <h2 className="bank__label" id="contact-heading">
-              Contact
-            </h2>
-            <p className="prose">Open to senior Rust, distributed-systems, and backend infrastructure roles.</p>
-            <div className="hero__contact" style={{ marginTop: '1.25rem' }}>
-              <ContactLinks />
+          <section id="skills" className="bank bank--lit" aria-labelledby="skills-heading">
+            <div className="bank__inner">
+              <h2 className="bank__label" id="skills-heading">
+                Skills
+              </h2>
+              <TalentTree groups={skillGroups} />
             </div>
-          </div>
-        </section>
-      </main>
+          </section>
 
-      <footer className="footer">
-        <p className="footer__copy">© {new Date().getFullYear()} Lucas Lemos</p>
-        <div className="footer__links hero__contact">
-          <ContactLinks />
-        </div>
-      </footer>
-    </div>
+          <section id="education" className="bank" aria-labelledby="education-heading">
+            <div className="bank__inner">
+              <h2 className="bank__label" id="education-heading">
+                Education &amp; Languages
+              </h2>
+              <div className="dual">
+                <div>
+                  <div className="record">
+                    <p className="record__title">Bachelor&apos;s in Computer Science</p>
+                    <p className="record__meta">Faculdade Anhanguera, Divinópolis — 2018–2022</p>
+                  </div>
+                  <div className="record">
+                    <p className="record__title">Associate&apos;s Degree, Industrial Electronics Technology</p>
+                    <p className="record__meta">SENAI Aniello Greco, Divinópolis — 2013–2014</p>
+                  </div>
+                </div>
+                <div>
+                  <div className="record">
+                    <p className="record__title">English</p>
+                    <p className="record__level">Fluent</p>
+                  </div>
+                  <div className="record">
+                    <p className="record__title">Portuguese</p>
+                    <p className="record__level">Fluent</p>
+                  </div>
+                  <div className="record">
+                    <p className="record__title">Japanese</p>
+                    <p className="record__level">Beginner</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="contact" className="bank bank--lit" aria-labelledby="contact-heading">
+            <div className="bank__inner">
+              <h2 className="bank__label" id="contact-heading">
+                Contact
+              </h2>
+              <p className="prose">Open to senior Rust, distributed-systems, and backend infrastructure roles.</p>
+              <div className="hero__contact" style={{ marginTop: '1.25rem' }}>
+                <ContactLinks />
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer className="footer">
+          <p className="footer__copy">© {new Date().getFullYear()} Lucas Lemos</p>
+        </footer>
+      </div>
+    </>
   )
 }
 

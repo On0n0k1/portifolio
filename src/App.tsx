@@ -139,6 +139,13 @@ type ProjectEntry = {
 
 const projects: ProjectEntry[] = [
   {
+    title: 'Generic Multi-threaded Worker Library',
+    repo: 'kik_sync_service',
+    tags: ['Rust', 'Concurrency', 'Multi-threading', 'Channels', 'Generics', 'Trait-based API'],
+    description:
+      'A published Rust crate that fans customized parallel computations out across configurable worker threads over channels — implement three small generic traits once (the input, the output, and how one becomes the other) and it handles the thread orchestration, letting the workload push the CPU as hard as it can.',
+  },
+  {
     title: 'Event-Driven Microservices Platform',
     repo: 'go-event-platform',
     tags: ['Go', 'gRPC', 'mTLS', 'Redis', 'NATS', 'OpenTelemetry', 'Prometheus', 'Grafana'],

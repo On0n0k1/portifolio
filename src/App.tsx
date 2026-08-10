@@ -325,7 +325,8 @@ function App() {
             <div className="hero__identity">
               <h1>Lucas Lemos</h1>
               <p className="hero__title">
-                Senior Software Engineer — Rust, Distributed Systems, Backend Infrastructure &amp; Blockchain
+                Senior Software Engineer — 6+ Years in Rust, Distributed Systems, Backend Infrastructure &amp;
+                Blockchain
               </p>
               <p className="hero__location">Divinópolis, Minas Gerais, Brazil</p>
               <div className="hero__contact hero__contact--joined hero__contact--centered">
@@ -347,16 +348,11 @@ function App() {
         </header>
 
         <main id="main-content">
-          <section id="summary" className="bank" aria-labelledby="summary-heading">
+          <section id="summary" className="bank" aria-label="Summary">
             <div className="bank__inner">
-              <h2 className="bank__label" id="summary-heading">
-                Summary
-              </h2>
-              <div className="prose">
+              <div className="prose prose--summary">
                 <p>
-                  {withStats(
-                    'Senior software engineer with 6+ years specializing in Rust and distributed systems — building low-latency backend services that process 1M+ events/day at 2,000 requests/second, plus cryptography, blockchain, and technical leadership experience.',
-                  )}
+                  {withStats('I like to find the most optimal and effective ways for machines to solve our problems.')}
                 </p>
               </div>
             </div>

@@ -249,6 +249,16 @@ a {
   font-size: 1.05rem;
 }
 
+.prose--summary {
+  padding: var(--space-xl) 0;
+  max-width: 52rem;
+}
+
+.prose--summary p {
+  font-size: clamp(1.3rem, 3vw, 1.75rem);
+  line-height: 1.5;
+}
+
 /* ---------- Nav ---------- */
 
 .nav {

@@ -477,9 +477,10 @@ function App() {
                 Contact
               </h2>
               <p className="prose">
-                Open to senior Rust, distributed-systems, backend infrastructure, and blockchain roles.
+                Open to senior Rust, distributed-systems, backend infrastructure, and blockchain roles — let&apos;s
+                talk.
               </p>
-              <div className="hero__contact hero__contact--joined" style={{ marginTop: '1.25rem' }}>
+              <div className="hero__contact hero__contact--joined hero__contact--right" style={{ marginTop: '1.25rem' }}>
                 <ContactLinks />
               </div>
             </div>

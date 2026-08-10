@@ -433,6 +433,14 @@ a {
   margin-inline: auto;
 }
 
+/* Contact section only: pushes the joined bar to the right edge of the full
+   bank width instead of hugging the left edge under the "Contact" heading. */
+.hero__contact--right {
+  display: flex;
+  width: fit-content;
+  margin-inline-start: auto;
+}
+
 /* ---------- Readout bank (fantasy: engraved stat plaques) ---------- */
 
 .readouts {

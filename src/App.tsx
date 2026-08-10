@@ -167,6 +167,14 @@ const heroReadouts = [
   { digits: '−60%', label: 'Latency, after optimization' },
 ]
 
+const LANGUAGE_PIP_MAX = 3
+
+const languages = [
+  { name: 'English', level: 'Fluent', pips: 3 },
+  { name: 'Portuguese', level: 'Fluent', pips: 3 },
+  { name: 'Japanese', level: 'Beginner', pips: 1 },
+]
+
 const navSections = [
   { id: 'summary', label: 'Summary' },
   { id: 'experience', label: 'Experience' },
@@ -440,18 +448,22 @@ function App() {
                   </div>
                 </div>
                 <div>
-                  <div className="record">
-                    <p className="record__title">English</p>
-                    <p className="record__level">Fluent</p>
-                  </div>
-                  <div className="record">
-                    <p className="record__title">Portuguese</p>
-                    <p className="record__level">Fluent</p>
-                  </div>
-                  <div className="record">
-                    <p className="record__title">Japanese</p>
-                    <p className="record__level">Beginner</p>
-                  </div>
+                  {languages.map((lang) => (
+                    <div className="record" key={lang.name}>
+                      <p className="record__title">{lang.name}</p>
+                      <p className="record__level">
+                        <span className="level-pips" aria-hidden="true">
+                          {Array.from({ length: LANGUAGE_PIP_MAX }, (_, i) => (
+                            <span
+                              className={`level-pips__pip${i < lang.pips ? ' level-pips__pip--filled' : ''}`}
+                              key={i}
+                            />
+                          ))}
+                        </span>
+                        {lang.level}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

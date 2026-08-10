@@ -699,9 +699,33 @@ a {
 }
 
 .record__level {
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--font-mono);
   font-size: 0.85rem;
   color: var(--color-amber);
+}
+
+/* Language proficiency, echoed as pips rather than the talent tree's fully-
+   filled diamonds: same motif, deliberately smaller and partly hollow so it
+   reads as a quieter cousin, not a second allocation mechanic. */
+.level-pips {
+  display: inline-flex;
+  gap: 0.3rem;
+}
+
+.level-pips__pip {
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid var(--color-amber-dim);
+  transform: rotate(45deg);
+}
+
+.level-pips__pip--filled {
+  background: var(--color-amber);
+  border-color: var(--color-amber);
 }
 
 /* ---------- Placeholder ---------- */

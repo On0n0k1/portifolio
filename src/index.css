@@ -288,6 +288,7 @@ a {
 }
 
 .nav__mark {
+  flex-shrink: 0;
   font-family: var(--font-mono);
   font-weight: 500;
   font-size: 0.95rem;
@@ -296,19 +297,18 @@ a {
   white-space: nowrap;
 }
 
-.nav__switches {
-  display: flex;
-  gap: 0.4rem;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.nav__switches::-webkit-scrollbar {
-  display: none;
-}
-
+/* Below ~768px the bar's natural content width (6 items) exceeds the space
+   left after the wordmark; rather than flex-shrinking and silently clipping
+   items past the visible edge (the bug this replaced), the bar scrolls
+   horizontally within its own bounds. The four-layer background is the
+   classic CSS-only "scroll shadow" technique: the two `local`-attached
+   layers scroll with the content and mask the shadow back to the plate
+   color at each end, so a shadow only shows on the side that actually has
+   more to scroll to — no JS, and it stays correct as items are added. */
 .nav-bar {
   display: inline-flex;
+  min-width: 0;
+  max-width: 100%;
   border: 1px solid var(--color-mesh-border);
   clip-path: polygon(var(--cut) 0,
       100% 0,
@@ -316,11 +316,28 @@ a {
       calc(100% - var(--cut)) 100%,
       0 100%,
       0 var(--cut));
-  background: var(--color-plate);
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  background-color: var(--color-plate);
+  background-image:
+    linear-gradient(to right, var(--color-plate), var(--color-plate) 20px, transparent),
+    linear-gradient(to left, var(--color-plate), var(--color-plate) 20px, transparent),
+    linear-gradient(to right, color-mix(in srgb, var(--color-chassis) 80%, transparent), transparent 16px),
+    linear-gradient(to left, color-mix(in srgb, var(--color-chassis) 80%, transparent), transparent 16px);
+  background-repeat: no-repeat;
+  background-size: 28px 100%, 28px 100%, 16px 100%, 16px 100%;
+  background-position: left, right, left, right;
+  background-attachment: local, local, scroll, scroll;
+}
+
+.nav-bar::-webkit-scrollbar {
+  display: none;
 }
 
 .nav-bar__item {
+  flex-shrink: 0;
   padding: 0.5rem 0.85rem;
   min-height: 2.75rem;
   display: inline-flex;
@@ -424,6 +441,10 @@ a {
    still gets the individual-pill treatment. */
 .hero__contact--joined {
   display: inline-flex;
+  /* A touch of vertical padding so the wrapped-to-2-rows state (narrow
+     viewports) has real clearance instead of an exact pixel fit against
+     the two rows' own height — fragile across font/browser metrics. */
+  padding: 3px 0;
   border: 1px solid var(--color-mesh-border);
   clip-path: polygon(var(--cut) 0,
       100% 0,
@@ -497,6 +518,10 @@ a {
 
 .readout__digits[data-delay='2'] {
   animation-delay: 0.2s;
+}
+
+.readout__digits[data-delay='3'] {
+  animation-delay: 0.3s;
 }
 
 @keyframes sigil-glow {

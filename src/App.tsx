@@ -170,6 +170,7 @@ const heroReadouts = [
   { digits: '1M+', label: 'Events / day, zero data loss' },
   { digits: '2,000', label: 'Requests / second' },
   { digits: '−60%', label: 'Latency, after optimization' },
+  { digits: '−25%', label: 'Release cycles, after CI/CD' },
 ]
 
 const LANGUAGE_PIP_MAX = 3

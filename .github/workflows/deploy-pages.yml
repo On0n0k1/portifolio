@@ -1,0 +1,52 @@
+name: Deploy to On0n0k1.github.io
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+
+      - name: Set up deploy key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.PAGES_DEPLOY_SSH_KEY }}
+
+      - name: Clone On0n0k1.github.io
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+          git clone --depth 1 git@github.com:On0n0k1/On0n0k1.github.io.git "$RUNNER_TEMP/pages-repo"
+
+      # Wipes everything under sites/ except sites/projects/, which other
+      # repos' own pipelines push their build output into independently --
+      # this pipeline must never touch that directory.
+      - name: Sync built site into sites/, preserving sites/projects/
+        run: |
+          PAGES_REPO="$RUNNER_TEMP/pages-repo"
+          mkdir -p "$PAGES_REPO/sites"
+          find "$PAGES_REPO/sites" -mindepth 1 -maxdepth 1 ! -name 'projects' -exec rm -rf {} +
+          cp -r dist/. "$PAGES_REPO/sites/"
+
+      - name: Commit and push
+        run: |
+          cd "$RUNNER_TEMP/pages-repo"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to deploy."
+          else
+            git commit -m "deploy: update portfolio from impeccable-practice@${{ github.sha }}"
+            git push
+          fi

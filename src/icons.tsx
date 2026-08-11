@@ -39,3 +39,11 @@ export function GitHubIcon(props: IconProps) {
     </svg>
   )
 }
+
+export function ChevronRightIcon(props: IconProps) {
+  return (
+    <svg {...shared} width={14} height={14} {...props} aria-hidden="true">
+      <path d="M9 5l6 7-6 7" />
+    </svg>
+  )
+}

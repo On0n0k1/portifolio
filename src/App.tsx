@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
-import { GitHubIcon, LinkedInIcon, MailIcon } from './icons'
+import { ChevronRightIcon, GitHubIcon, LinkedInIcon, MailIcon } from './icons'
 import { FogBackground } from './components/FogBackground'
 
 type ExperienceEntry = {
@@ -322,17 +322,20 @@ function App() {
           </a>
         <nav className="nav" aria-label="Primary">
           <span className="nav__mark">LUCAS LEMOS</span>
-          <div className="nav-bar" role="group" aria-label="Section navigation">
-            {navSections.map((section) => (
-              <a
-                key={section.id}
-                className="nav-bar__item"
-                href={section.href ?? `#${section.id}`}
-                aria-current={activeId === section.id}
-              >
-                {section.label}
-              </a>
-            ))}
+          <div className="nav-bar-wrap">
+            <div className="nav-bar" role="group" aria-label="Section navigation">
+              {navSections.map((section) => (
+                <a
+                  key={section.id}
+                  className="nav-bar__item"
+                  href={section.href ?? `#${section.id}`}
+                  aria-current={activeId === section.id}
+                >
+                  {section.label}
+                </a>
+              ))}
+            </div>
+            <ChevronRightIcon className="nav-bar__more-hint" />
           </div>
         </nav>
 

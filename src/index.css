@@ -305,6 +305,16 @@ a {
    layers scroll with the content and mask the shadow back to the plate
    color at each end, so a shadow only shows on the side that actually has
    more to scroll to — no JS, and it stays correct as items are added. */
+/* Wraps .nav-bar so the "more items" chevron can sit fixed over the
+   scrollport's trailing edge, instead of scrolling away with the content
+   inside .nav-bar itself. */
+.nav-bar-wrap {
+  position: relative;
+  display: inline-flex;
+  min-width: 0;
+  max-width: 100%;
+}
+
 .nav-bar {
   display: inline-flex;
   min-width: 0;
@@ -334,6 +344,29 @@ a {
 
 .nav-bar::-webkit-scrollbar {
   display: none;
+}
+
+/* The scroll-shadow above was too subtle a cue on its own (flagged
+   independently by both a design review and direct visual inspection) —
+   below the width where the bar actually needs to scroll, a small arrow
+   makes "there's more, swipe" unambiguous. */
+.nav-bar__more-hint {
+  display: none;
+}
+
+@media (max-width: 47.9375rem) {
+  .nav-bar__more-hint {
+    display: block;
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-amber);
+    stroke: currentColor;
+    fill: none;
+    pointer-events: none;
+    filter: drop-shadow(0 0 2px var(--color-chassis)) drop-shadow(0 0 2px var(--color-chassis));
+  }
 }
 
 .nav-bar__item {

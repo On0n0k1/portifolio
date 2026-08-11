@@ -242,18 +242,10 @@ function useActiveSection(ids: string[]) {
     })
 
     // The shrunk rootMargin never intersects a short final section once the
-    // page is scrolled to its max — force the last item active in that case,
-    // and hand back to the section right above it the instant we scroll up,
-    // rather than waiting for that section to re-enter the observer's band.
-    let wasAtBottom = false
+    // page is scrolled to its max — force the last item active in that case.
     const handleScroll = () => {
       const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2
-      if (atBottom) {
-        setActiveId(ids[ids.length - 1])
-      } else if (wasAtBottom && ids.length > 1) {
-        setActiveId(ids[ids.length - 2])
-      }
-      wasAtBottom = atBottom
+      if (atBottom) setActiveId(ids[ids.length - 1])
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll()

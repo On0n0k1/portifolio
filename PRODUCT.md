@@ -16,7 +16,7 @@ Recruiters and hiring managers evaluating Lucas for a job. They are time-constra
 
 ## Product Purpose
 
-A personal portfolio site that presents Lucas's projects and background to convince a hiring manager he is worth interviewing, and gives them a clear path to contact him or view his work in more depth.
+A personal portfolio site that presents Lucas's projects and background to convince a hiring manager he is worth interviewing, and gives them a clear path to contact him or view his work in more depth. It also surfaces his availability for freelance engagements (web development, smart contracts, performance optimization) as a secondary audience alongside full-time hiring managers.
 
 ## Positioning
 

@@ -182,12 +182,28 @@ const languages = [
   { name: 'Japanese', level: 'Beginner', pips: 1 },
 ]
 
+const services = [
+  {
+    title: 'Web Development',
+    description: 'Full-stack web applications — React/TypeScript frontends with Node.js and Rust backends.',
+  },
+  {
+    title: 'Smart Contracts',
+    description: 'Smart contract development and deployment on NEAR, Solana, and Ethereum/EVM, including WASM and Solidity.',
+  },
+  {
+    title: 'Optimizations',
+    description: 'Performance tuning for backend systems — reducing latency, increasing throughput, cutting infrastructure load.',
+  },
+]
+
 const navSections: { id: string; label: string; href?: string }[] = [
   { id: 'summary', label: 'Home', href: '#' },
   { id: 'experience', label: 'Experience' },
   { id: 'projects', label: 'Projects' },
   { id: 'skills', label: 'Skills' },
   { id: 'education', label: 'Education' },
+  { id: 'services', label: 'Services' },
   { id: 'contact', label: 'Contact' },
 ]
 
@@ -478,6 +494,22 @@ function App() {
           <section id="activity" className="bank" aria-label="GitHub activity">
             <div className="bank__inner">
               <ContributionHeatmap />
+            </div>
+          </section>
+
+          <section id="services" className="bank bank--lit" aria-labelledby="services-heading">
+            <div className="bank__inner">
+              <h2 className="bank__label" id="services-heading">
+                Services
+              </h2>
+              <div className="services-grid">
+                {services.map((service) => (
+                  <article className="job kit-frame" key={service.title}>
+                    <h3 className="job__role">{service.title}</h3>
+                    <p className="prose project__description">{service.description}</p>
+                  </article>
+                ))}
+              </div>
             </div>
           </section>
 

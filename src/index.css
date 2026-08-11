@@ -604,6 +604,19 @@ a {
   margin-top: var(--space-sm);
 }
 
+/* Services reuses the .job/.kit-frame card, but as a row instead of a
+   stack — cancel the adjacent-sibling stacking margin so cards 2 and 3
+   don't sit lower than card 1 in the grid row; gap handles spacing. */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: var(--space-sm);
+}
+
+.services-grid .job+.job {
+  margin-top: 0;
+}
+
 .job__header {
   display: flex;
   flex-wrap: wrap;

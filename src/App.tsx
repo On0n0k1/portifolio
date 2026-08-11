@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { ChevronRightIcon, GitHubIcon, LinkedInIcon, MailIcon } from './icons'
 import { FogBackground } from './components/FogBackground'
+import { ContributionHeatmap } from './components/ContributionHeatmap'
 
 type ExperienceEntry = {
   role: string
@@ -179,18 +180,6 @@ const languages = [
   { name: 'English', level: 'Fluent', pips: 3 },
   { name: 'Portuguese', level: 'Fluent', pips: 3 },
   { name: 'Japanese', level: 'Beginner', pips: 1 },
-]
-
-const precepts = [
-  'Do not think dishonestly.',
-  'The way is in training.',
-  'Become acquainted with every art.',
-  'Know the ways of all professions.',
-  'Distinguish between gain and loss in worldly matters.',
-  'Develop intuitive judgement and understanding for everything.',
-  'Perceive those things which cannot be seen.',
-  'Pay attention even to trifles.',
-  'Do nothing which is of no use.',
 ]
 
 const navSections: { id: string; label: string; href?: string }[] = [
@@ -486,17 +475,9 @@ function App() {
             </div>
           </section>
 
-          <section id="quote" className="bank" aria-label="Quote">
+          <section id="activity" className="bank" aria-label="GitHub activity">
             <div className="bank__inner">
-              <blockquote className="quote">
-                <p className="quote__intro">This is the way for those who want to learn my strategy:</p>
-                <ul className="quote__precepts">
-                  {precepts.map((precept) => (
-                    <li key={precept}>{precept}</li>
-                  ))}
-                </ul>
-                <cite className="quote__attribution">— Musashi Miyamoto</cite>
-              </blockquote>
+              <ContributionHeatmap />
             </div>
           </section>
 

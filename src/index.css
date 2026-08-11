@@ -850,44 +850,60 @@ a {
   margin-right: auto;
 }
 
-/* ---------- Quote (epigraph before Contact) ---------- */
+/* ---------- GitHub contribution activity (before Contact) ---------- */
 
-.quote {
-  margin: 0 auto;
-  max-width: 44rem;
-  text-align: center;
-}
-
-.quote__intro {
-  font-family: var(--font-sans);
-  font-style: italic;
-  font-size: clamp(1.3rem, 3vw, 1.75rem);
-  line-height: 1.5;
-  color: var(--color-text);
-}
-
-.quote__precepts {
-  margin-top: var(--space-md);
-  display: grid;
-  gap: 0.6rem;
-}
-
-.quote__precepts li {
-  font-family: var(--font-sans);
-  font-style: italic;
-  font-size: 1.05rem;
-  line-height: 1.6;
+.contrib__headline {
   color: var(--color-text-secondary);
+  font-size: 1.05rem;
 }
 
-.quote__attribution {
-  display: block;
+/* Each day is a diamond, matching the kit's recurring diamond motif rather
+   than introducing a plain square grid — the same "lit vs. unlit" language
+   used by .bank__label::before: dim mesh tones at rest, amber once there's
+   real activity, intensity scaling with color-mix so the levels stay
+   token-derived instead of inventing five new colors. */
+.contrib__grid {
   margin-top: var(--space-md);
-  font-family: var(--font-mono);
-  font-style: normal;
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  color: var(--color-amber);
+  display: flex;
+  gap: 3px;
+  overflow-x: auto;
+  padding: 2px;
+}
+
+.contrib__week {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.contrib__day {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  transform: rotate(45deg);
+  background: var(--color-chassis);
+  border: 1.5px solid var(--color-mesh-border);
+}
+
+.contrib__day--1 {
+  background: color-mix(in srgb, var(--color-amber) 25%, var(--color-chassis));
+  border-color: var(--color-amber-dim);
+}
+
+.contrib__day--2 {
+  background: color-mix(in srgb, var(--color-amber) 50%, var(--color-chassis));
+  border-color: var(--color-amber-dim);
+}
+
+.contrib__day--3 {
+  background: color-mix(in srgb, var(--color-amber) 75%, var(--color-chassis));
+  border-color: var(--color-amber);
+}
+
+.contrib__day--4 {
+  background: var(--color-amber);
+  border-color: var(--color-amber);
+  box-shadow: 0 0 3px color-mix(in srgb, var(--color-amber) 60%, transparent);
 }
 
 /* ---------- Footer ---------- */

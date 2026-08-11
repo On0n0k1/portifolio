@@ -68,7 +68,7 @@ const experience: ExperienceEntry[] = [
     role: 'Web Developer (Freelance)',
     org: 'IT Services & Consulting',
     location: 'Divinópolis, Brazil (Remote)',
-    period: 'Jan 2020 – Dec 2021',
+    period: 'Oct 2020 – Dec 2021',
     highlights: [
       'Built full-stack React features using Node.js and Rust for multiple clients; deployed Rust services on GCP and AWS.',
       'Implemented WebAssembly modules for browser-based processing of heavy data workloads.',

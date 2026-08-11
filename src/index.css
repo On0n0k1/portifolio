@@ -1,5 +1,7 @@
 @import '@fontsource/cinzel/latin-400.css';
 @import '@fontsource/cinzel/latin-ext-400.css';
+@import '@fontsource/cinzel/latin-500.css';
+@import '@fontsource/cinzel/latin-ext-500.css';
 @import '@fontsource/cinzel/latin-600.css';
 @import '@fontsource/cinzel/latin-ext-600.css';
 @import '@fontsource/alegreya/latin-400.css';
@@ -8,8 +10,8 @@
 @import '@fontsource/alegreya/latin-ext-500.css';
 @import '@fontsource/alegreya-sc/latin-400.css';
 @import '@fontsource/alegreya-sc/latin-ext-400.css';
-@import '@fontsource/alegreya-sc/latin-700.css';
-@import '@fontsource/alegreya-sc/latin-ext-700.css';
+@import '@fontsource/alegreya-sc/latin-500.css';
+@import '@fontsource/alegreya-sc/latin-ext-500.css';
 
 /* An epic-fantasy RPG interface, built on the licensed "Epic Fantasy RPG
    UI Kit" asset pack. --font-mono here is Alegreya SC (an inscribed
@@ -515,7 +517,7 @@ a {
   margin-top: 0.35rem;
   font-family: var(--font-sans);
   font-weight: 500;
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-text-secondary);
@@ -643,6 +645,8 @@ a {
 }
 
 .talent-branch__title {
+  font-family: var(--font-display);
+  font-weight: 600;
   font-size: 0.85rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -676,7 +680,7 @@ a {
   grid-template-columns: 24px 1fr;
   align-items: center;
   gap: 0.7rem;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--color-text);
 }
 
@@ -722,7 +726,7 @@ a {
 .record__meta {
   margin-top: 0.25rem;
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--color-text-secondary);
 }
 
@@ -794,7 +798,7 @@ a {
 
 .footer__copy {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--color-text-secondary);
 }
 

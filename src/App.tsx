@@ -180,6 +180,18 @@ const languages = [
   { name: 'Japanese', level: 'Beginner', pips: 1 },
 ]
 
+const precepts = [
+  'Do not think dishonestly.',
+  'The way is in training.',
+  'Become acquainted with every art.',
+  'Know the ways of all professions.',
+  'Distinguish between gain and loss in worldly matters.',
+  'Develop intuitive judgement and understanding for everything.',
+  'Perceive those things which cannot be seen.',
+  'Pay attention even to trifles.',
+  'Do nothing which is of no use.',
+]
+
 const navSections: { id: string; label: string; href?: string }[] = [
   { id: 'summary', label: 'Home', href: '#' },
   { id: 'experience', label: 'Experience' },
@@ -467,6 +479,20 @@ function App() {
                   ))}
                 </div>
               </div>
+            </div>
+          </section>
+
+          <section id="quote" className="bank" aria-label="Quote">
+            <div className="bank__inner">
+              <blockquote className="quote">
+                <p className="quote__intro">This is the way for those who want to learn my strategy:</p>
+                <ul className="quote__precepts">
+                  {precepts.map((precept) => (
+                    <li key={precept}>{precept}</li>
+                  ))}
+                </ul>
+                <cite className="quote__attribution">— Musashi Miyamoto</cite>
+              </blockquote>
             </div>
           </section>
 

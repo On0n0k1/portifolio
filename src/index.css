@@ -785,6 +785,46 @@ a {
   margin-right: auto;
 }
 
+/* ---------- Quote (epigraph before Contact) ---------- */
+
+.quote {
+  margin: 0 auto;
+  max-width: 44rem;
+  text-align: center;
+}
+
+.quote__intro {
+  font-family: var(--font-sans);
+  font-style: italic;
+  font-size: clamp(1.3rem, 3vw, 1.75rem);
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.quote__precepts {
+  margin-top: var(--space-md);
+  display: grid;
+  gap: 0.6rem;
+}
+
+.quote__precepts li {
+  font-family: var(--font-sans);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.quote__attribution {
+  display: block;
+  margin-top: var(--space-md);
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: var(--color-amber);
+}
+
 /* ---------- Footer ---------- */
 
 .footer {

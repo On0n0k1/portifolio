@@ -47,6 +47,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to deploy."
           else
-            git commit -m "deploy: update portfolio from impeccable-practice@${{ github.sha }}"
+            git commit -m "deploy: sync from portfolio@${{ github.sha }}"
             git push
           fi

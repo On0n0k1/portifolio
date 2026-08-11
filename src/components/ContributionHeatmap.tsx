@@ -12,7 +12,7 @@ export function ContributionHeatmap() {
   const { totalContributions, weeks } = contributions
 
   return (
-    <div className="contrib">
+    <div className="contrib kit-frame">
       <p className="contrib__headline">
         <span className="stat">{totalContributions.toLocaleString()}</span> contributions on GitHub in the past year
       </p>

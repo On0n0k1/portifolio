@@ -658,18 +658,24 @@ a {
 
 /* ---------- Skills: static talent tree (display only, no interaction) ---------- */
 
+/* Multi-column rather than grid: card heights vary a lot by item count
+   (5 vs. 14), and a grid's row-major placement left empty column-slots in
+   the final row. Columns flow content top-to-bottom then wrap, packing
+   shorter cards densely with no trailing gaps — a CSS-only masonry. */
 .talent-tree {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: var(--space-sm);
-  align-items: start;
+  columns: 15rem 4;
+  column-gap: var(--space-sm);
 }
 
 .talent-branch {
+  break-inside: avoid;
+  margin-bottom: var(--space-sm);
   padding: var(--space-xs);
 }
 
 .talent-branch__title {
+  hyphens: auto;
+  overflow-wrap: break-word;
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 0.85rem;

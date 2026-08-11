@@ -78,6 +78,8 @@ const experience: ExperienceEntry[] = [
 ]
 
 const skillGroups: Record<string, string[]> = {
+  Blockchain: ['Solana', 'NEAR Protocol', 'Ethereum (EVM)', 'Solidity', 'WebAssembly (WASM)'],
+  Cryptography: ['ZK-SNARKs', 'ZK-STARKs', 'PGP', 'RSA', 'AES', 'ECDH', 'Homomorphic Encryption (FHE, TFHE)'],
   Languages: ['Rust', 'Python', 'TypeScript', 'Node.js', 'C', 'Java', 'Go'],
   'Backend & Architecture': [
     'Distributed Systems',
@@ -90,6 +92,7 @@ const skillGroups: Record<string, string[]> = {
     'Async & Parallel Programming',
     'Clean Architecture',
   ],
+  Frameworks: ['Tokio', 'Axum', 'Actix', 'Rocket-rs', 'React'],
   AWS: [
     'Lambda',
     'SQS',
@@ -107,10 +110,6 @@ const skillGroups: Record<string, string[]> = {
     'IAM',
   ],
   'Orchestration & CI/CD': ['Docker', 'Kubernetes', 'Terraform', 'GitHub Actions', 'GitLab CI/CD', 'Linux (production)'],
-  Blockchain: ['Solana', 'NEAR Protocol', 'Ethereum (EVM)', 'Solidity', 'WebAssembly (WASM)'],
-  Cryptography: ['ZK-SNARKs', 'ZK-STARKs', 'PGP', 'RSA', 'AES', 'ECDH', 'Homomorphic Encryption (FHE, TFHE)'],
-  'Auth & Security': ['OAuth 2.0', 'JWT', 'Public Key Cryptography'],
-  Frameworks: ['Tokio', 'Axum', 'Actix', 'Rocket-rs', 'React'],
   'Databases & Messaging': [
     'PostgreSQL',
     'MySQL',
@@ -122,6 +121,7 @@ const skillGroups: Record<string, string[]> = {
     'SQL',
     'NoSQL',
   ],
+  'Auth & Security': ['OAuth 2.0', 'JWT', 'Public Key Cryptography'],
   Observability: ['Prometheus', 'Grafana', 'Metrics', 'Logging', 'Tracing'],
 }
 

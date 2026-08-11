@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-11T08:00:00Z",
+  "title": "Design System: Lucas Lemos — Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "kit-gold": {
+        "role": "primary",
+        "displayName": "Kit Gold",
+        "canonical": "#dab16d",
+        "tonalRamp": ["#3d2c0f", "#6c4d1b", "#9a6f27", "#c99033", "#d6aa5f", "#e2c28e", "#eedbbc", "#faf4eb"]
+      },
+      "amber-dim": {
+        "role": "primary-muted",
+        "displayName": "Amber Dim",
+        "canonical": "#8a6a3a",
+        "tonalRamp": ["#2c2112", "#4c3b20", "#6c542e", "#8a6a3a", "#a5875f", "#c0a68a", "#dbc9b8", "#f2ece4"]
+      },
+      "chassis-navy": {
+        "role": "neutral",
+        "displayName": "Chassis Navy",
+        "canonical": "#050510",
+        "tonalRamp": ["#050510", "#0d0e1f", "#16182f", "#262a45", "#40465f", "#6b7186", "#9ba1b3", "#d5d8e0"]
+      },
+      "plate-navy": {
+        "role": "neutral",
+        "displayName": "Plate Navy",
+        "canonical": "#01000f",
+        "tonalRamp": ["#01000f", "#0a0918", "#14152a", "#232441", "#3a3c5c", "#62657f", "#9296a8", "#d0d3dc"]
+      },
+      "bronze-mesh": {
+        "role": "neutral",
+        "displayName": "Bronze Mesh",
+        "canonical": "#6b5636",
+        "tonalRamp": ["#33291a", "#5a482d", "#806741", "#a78654", "#bca27a", "#cfbda1", "#e3d8c7", "#f6f3ee"]
+      },
+      "mesh-border": {
+        "role": "neutral",
+        "displayName": "Mesh Border",
+        "canonical": "#3a2e18"
+      },
+      "parchment": {
+        "role": "neutral",
+        "displayName": "Parchment White",
+        "canonical": "#f0e9d8"
+      },
+      "warm-tan": {
+        "role": "neutral",
+        "displayName": "Warm Tan",
+        "canonical": "#c9bb98",
+        "tonalRamp": ["#322b1a", "#584c2e", "#7f6d42", "#a58e56", "#baa87c", "#cec1a2", "#e2dbc8", "#f6f4ee"]
+      },
+      "fog-highlight": {
+        "role": "atmosphere",
+        "displayName": "Fog Highlight",
+        "canonical": "#54432a"
+      },
+      "fog-midtone": {
+        "role": "atmosphere",
+        "displayName": "Fog Midtone",
+        "canonical": "#120f24"
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The name in the hero. The only headline-scale text on the page." },
+      "headline": { "displayName": "Headline", "purpose": "Section labels, nav items, job/project titles — an inscribed plaque label, not an editorial headline." },
+      "lead": { "displayName": "Lead", "purpose": "A single large first-person statement, used exactly twice (Summary, Contact CTA)." },
+      "body": { "displayName": "Body", "purpose": "Prose paragraphs and project descriptions." },
+      "data": { "displayName": "Data", "purpose": "Every stat, date range, and metric, in tabular figures where numeric." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "ease-out-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Confident, decelerating arrival — used for the sigil-glow reveal and all hover/focus color transitions." }
+    ],
+    "breakpoints": [
+      { "name": "dual-stack", "value": "48rem" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Contact Link (Primary Button)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Email/LinkedIn/GitHub pill, standalone or joined into a divided bar.",
+      "html": "<a class=\"ds-contact-link\" href=\"#\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" stroke=\"currentColor\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"1.5\"></rect><path d=\"M4 6.5l8 6.5 8-6.5\"></path></svg> Email</a>",
+      "css": ".ds-contact-link { display: inline-flex; align-items: center; gap: 0.5em; min-height: 2.75rem; padding: 0.55rem 1rem; border: 1px solid #3a2e18; clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px); background: #01000f; color: #f0e9d8; font-family: Cinzel, Georgia, serif; font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: border-color 0.15s cubic-bezier(0.16,1,0.3,1), color 0.15s cubic-bezier(0.16,1,0.3,1); } .ds-contact-link:hover, .ds-contact-link:focus-visible { border-color: #8a6a3a; color: #dab16d; }"
+    },
+    {
+      "name": "Nav Bar Item",
+      "kind": "nav",
+      "refersTo": "nav-item",
+      "description": "One tab in the sticky section-navigation bar; underlines and turns gold when its section is active.",
+      "html": "<a class=\"ds-nav-item\" href=\"#\" aria-current=\"true\">Skills</a>",
+      "css": ".ds-nav-item { padding: 0.5rem 0.85rem; min-height: 2.75rem; display: inline-flex; align-items: center; font-family: Cinzel, Georgia, serif; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: #c9bb98; text-decoration: none; border-left: 1px solid #3a2e18; box-shadow: inset 0 -2px 0 0 transparent; transition: color 0.15s cubic-bezier(0.16,1,0.3,1), box-shadow 0.15s cubic-bezier(0.16,1,0.3,1); } .ds-nav-item[aria-current='true'] { color: #dab16d; box-shadow: inset 0 -2px 0 0 #dab16d; }"
+    },
+    {
+      "name": "Project Tag (Chip)",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Small technology tag under a project title; informational only, no interactive state.",
+      "html": "<span class=\"ds-chip\">Rust</span>",
+      "css": ".ds-chip { display: inline-block; padding: 0.2rem 0.55rem; border: 1px solid #3a2e18; border-radius: 2px; background: #050510; color: #c9bb98; font-family: 'Alegreya SC', Alegreya, Georgia, serif; font-size: 0.72rem; letter-spacing: 0.03em; text-transform: uppercase; }"
+    },
+    {
+      "name": "Stat Readout (Signature Component)",
+      "kind": "custom",
+      "refersTo": "card",
+      "description": "Kit-framed plaque: one large amber tabular-nums figure over a small tracked label, with a staggered glow reveal on first paint. The hero's three career metrics only.",
+      "html": "<div class=\"ds-readout\"><p class=\"ds-readout-digits\">1M+</p><p class=\"ds-readout-label\">Events / day, zero data loss</p></div>",
+      "css": ".ds-readout { position: relative; padding: 0.5rem; overflow: hidden; border-width: 72px; border-style: solid; border-color: transparent; border-image-source: url('panel-frame.png'); border-image-slice: 140 210 200 190 fill; border-image-width: 72px; } .ds-readout-digits { font-family: 'Alegreya SC', Alegreya, Georgia, serif; font-weight: 500; font-variant-numeric: tabular-nums; font-size: clamp(1.6rem, 3.2vw, 2.25rem); color: #dab16d; text-shadow: 0 0 16px rgba(218,177,109,0.45); } .ds-readout-label { margin-top: 0.35rem; font-family: Alegreya, Georgia, serif; font-weight: 500; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: #c9bb98; }"
+    },
+    {
+      "name": "Talent Node (Signature Component)",
+      "kind": "custom",
+      "description": "Diamond-bulleted skill-name row inside a kit-framed talent branch; static display, no click interaction. Language-proficiency pips reuse the diamond at smaller scale with a hollow/filled state.",
+      "html": "<li class=\"ds-talent-node\"><span class=\"ds-talent-diamond\"></span><span>Rust</span></li>",
+      "css": ".ds-talent-node { position: relative; display: grid; grid-template-columns: 24px 1fr; align-items: center; gap: 0.7rem; font-size: 0.95rem; color: #f0e9d8; } .ds-talent-diamond { justify-self: center; width: 13px; height: 13px; border: 2px solid #8a6a3a; background: #dab16d; transform: rotate(45deg); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Adventurer's Record",
+    "overview": "The site borrows its visual grammar directly from a licensed commercial game-UI asset pack (the \"Epic Fantasy RPG UI Kit\"): deep navy grounds, sampled gold trim, diagonally cut panel corners, and inscribed small-caps labels. Section content and structure stay exactly as the résumé reads — Summary, Experience, Projects, Skills, Education, Contact — the visual skin never bleeds into gamified relabeling. A fixed full-viewport WebGL fog (Three.js + Vanta) now sits behind every section — a slow, understated bronze-on-navy drift, not a showpiece. It reads as atmosphere the adventurer's record is sitting inside, extending the North Star rather than competing with it. This world replaced an original \"Instrument Panel\" nixie-tube world at the user's explicit request; that world's evidence is fully superseded, not blended in.",
+    "keyCharacteristics": [
+      "Deep navy ground, single sampled-gold accent — restrained relative to the kit's own busier mockups.",
+      "Every major panel is framed by the kit's actual PANEL/00.png artwork via a CSS 9-slice border-image — real licensed art, not a CSS recreation.",
+      "A fixed animated fog layer behind all content, dark enough at every point in its cycle to hold body-text contrast.",
+      "Cinzel for display/headings, Alegreya for body prose, Alegreya SC for inscribed small-caps labels and data."
+    ],
+    "rules": [
+      { "name": "The Sampled Gold Rule", "body": "Every gold value in this system traces back to a real pixel sampled from the licensed kit's mockups, not an invented \"fantasy gold\" guess.", "section": "colors" },
+      { "name": "The Fog Stays Dark Rule", "body": "The animated background's color stops are chosen so no frame of the animation can wash out foreground text.", "section": "colors" },
+      { "name": "The Honest Substitute Rule", "body": "AvQest isn't available as a self-hostable web font; Cinzel was chosen for matching epic/monumental character, not as a lazy system-font fallback — the substitution is disclosed, not silently absorbed.", "section": "typography" },
+      { "name": "The Loaded-Weight Rule", "body": "Never declare a font-weight the stylesheet hasn't imported for that family.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Surfaces are flat at rest; the only elevation cue on the page is the hero readouts' one-time glow reveal.", "section": "elevation" },
+      { "name": "The Cut, Not Rounded Rule", "body": "Panels take a diagonal corner cut — never a large border-radius; pill/rounded shapes read as a different, unrelated world.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep résumé section names in plain English (Summary, Experience, Skills…) — the visual skin never gets renamed into game-menu metaphors.",
+      "Do trace every gold/navy value back to a real sampled pixel from the kit's mockups when adding new colors.",
+      "Do disclose any font substitution for AvQest rather than silently picking the closest system font.",
+      "Do verify every declared font-weight has a matching @fontsource import before shipping it.",
+      "Do keep the kit-frame art's flat (no-shadow) processing intact if it's ever regenerated from the source.",
+      "Do keep the fog background's color stops dark enough to hold text contrast at every point in its animation cycle."
+    ],
+    "donts": [
+      "Don't invent RPG mechanics or gamified copy (levels, currency, quests) beyond the visual skin — PRODUCT.md's claims stay factual.",
+      "Don't round panel corners; the cut-corner silhouette is this world's signature.",
+      "Don't combine .kit-frame and clip-path cut-corners on the same element — pick one per element.",
+      "Don't re-embed more of the kit's raw PNG assets without re-confirming license scope for each new use.",
+      "Don't let the talent tree's fully-filled diamond become the language-pip's default state — the pip's partial-fill only works as a distinct, quieter motif."
+    ]
+  }
+}

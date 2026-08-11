@@ -1,0 +1,50 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font-size",
+        "value": "0.95rem",
+        "createdAt": "2026-08-11T11:04:37.482Z",
+        "reason": "User confirmed: compact-body role (job__org, project__description, job__highlights li, talent-node, nav__mark), consolidated during /impeccable typeset"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "0.72rem",
+        "createdAt": "2026-08-11T11:04:37.512Z",
+        "reason": "User confirmed: micro-label step shared by nav-bar__item, readout__label, project-tag"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.6rem",
+        "createdAt": "2026-08-11T11:04:37.543Z",
+        "reason": "User confirmed: fluid lower bound of the hero readout digit display clamp()"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.15rem",
+        "createdAt": "2026-08-11T11:04:37.576Z",
+        "reason": "User confirmed: job/project title size (.job__role), the largest non-display headline step"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "0.8rem",
+        "createdAt": "2026-08-11T11:04:37.607Z",
+        "reason": "User confirmed: metadata step shared by job__period, record__meta, footer__copy, consolidated during /impeccable typeset"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1rem",
+        "createdAt": "2026-08-11T11:04:37.638Z",
+        "reason": "User confirmed: record__title, near body size on purpose, weight carries the emphasis"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "0.78rem",
+        "createdAt": "2026-08-11T11:04:37.669Z",
+        "reason": "User confirmed: placeholder__label's own step, standalone spacious empty-state context"
+      }
+    ]
+  }
+}

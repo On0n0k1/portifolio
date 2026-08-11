@@ -202,24 +202,32 @@ const navSections: { id: string; label: string; href?: string }[] = [
   { id: 'contact', label: 'Contact' },
 ]
 
-// Excludes "OAuth 2.0" — a version number, not a measured result the amber
-// readout styling is meant to signal (see DESIGN.md's "One Glow Rule").
-const STAT_PATTERN = /(?<!OAuth )\d[\d,]*(?:\.\d+)?(?:[KM]\+?|%|\+)?/g
+// The first branch consumes "OAuth 2.0" (a version number, not a measured
+// result) wholesale so its trailing ".0" can never be re-matched on its own
+// as an orphan digit; the second branch is the real stat, guarded against
+// starting mid-word (e.g. "S3", "K8s") — see DESIGN.md's "One Glow Rule".
+const STAT_PATTERN = /(?:OAuth \d[\d.]*)|(?<![A-Za-z])(\d[\d,]*(?:\.\d+)?(?:[KM]\+?|%|\+)?)/g
 
 function withStats(text: string): ReactNode[] {
-  const parts = text.split(STAT_PATTERN)
-  const matches = text.match(STAT_PATTERN) ?? []
   const nodes: ReactNode[] = []
-  parts.forEach((part, i) => {
-    if (part) nodes.push(part)
-    if (matches[i]) {
-      nodes.push(
-        <span className="stat" key={i}>
-          {matches[i]}
-        </span>,
-      )
-    }
-  })
+  let lastIndex = 0
+  let key = 0
+  for (const match of text.matchAll(STAT_PATTERN)) {
+    const [full, stat] = match
+    const start = match.index
+    if (start > lastIndex) nodes.push(text.slice(lastIndex, start))
+    nodes.push(
+      stat ? (
+        <span className="stat" key={key++}>
+          {stat}
+        </span>
+      ) : (
+        full
+      ),
+    )
+    lastIndex = start + full.length
+  }
+  if (lastIndex < text.length) nodes.push(text.slice(lastIndex))
   return nodes
 }
 

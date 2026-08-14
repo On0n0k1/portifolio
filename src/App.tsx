@@ -466,7 +466,7 @@ function App() {
                   </div>
                   <div className="record">
                     <p className="record__title">Associate&apos;s Degree, Industrial Electronics Technology</p>
-                    <p className="record__meta">SENAI Aniello Greco, Divinópolis — 2013–2014</p>
+                    <p className="record__meta">SENAI Anielo Greco, Divinópolis — 2013–2014</p>
                   </div>
                 </div>
                 <div>

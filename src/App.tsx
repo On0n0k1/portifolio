@@ -527,7 +527,7 @@ function App() {
         </main>
 
         <footer className="footer footer--centered-tight">
-          <p className="footer__copy">© {new Date().getFullYear()} Lucas Lemos</p>
+          <p className="footer__copy" suppressHydrationWarning>© {new Date().getFullYear()} Lucas Lemos</p>
         </footer>
       </div>
     </>

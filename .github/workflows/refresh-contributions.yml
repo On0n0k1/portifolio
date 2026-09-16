@@ -23,9 +23,11 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.CONTRIB_FETCH_TOKEN }}
       - name: Commit updated data if changed
-        # Pushing with the default GITHUB_TOKEN does not trigger new workflow
-        # runs, so this can't loop even though the schedule trigger alone
-        # already avoids the question.
+        # Pushed via CONTRIB_FETCH_TOKEN rather than the default GITHUB_TOKEN
+        # so this commit actually triggers deploy-pages.yml's `on: push` —
+        # GitHub Actions deliberately suppresses that for GITHUB_TOKEN pushes
+        # to prevent workflow loops. No loop risk here: deploy-pages.yml
+        # pushes to a different repo (On0n0k1.github.io), never back here.
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -34,5 +36,5 @@ jobs:
             echo "No contribution data changes, skipping commit."
           else
             git commit -m "chore: refresh GitHub contribution data"
-            git push
+            git push https://x-access-token:${{ secrets.CONTRIB_FETCH_TOKEN }}@github.com/On0n0k1/portifolio.git HEAD:main
           fi

@@ -14,6 +14,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # actions/checkout persists a GITHUB_TOKEN auth header for
+          # github.com by default, which overrides the PAT credentials
+          # embedded in the push URL below — the commit would still push
+          # authenticated as GITHUB_TOKEN under the hood, silently
+          # re-triggering the exact suppression this workflow exists to
+          # avoid. Disable it so the explicit PAT push actually takes effect.
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: 22

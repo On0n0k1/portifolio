@@ -40,6 +40,16 @@ export function GitHubIcon(props: IconProps) {
   )
 }
 
+export function ExternalLinkIcon(props: IconProps) {
+  return (
+    <svg {...shared} {...props} aria-hidden="true">
+      <path d="M14 4h6v6" />
+      <path d="M20 4l-9 9" />
+      <path d="M18 13v6a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 4 19V8a1.5 1.5 0 0 1 1.5-1.5H11" />
+    </svg>
+  )
+}
+
 export function ChevronRightIcon(props: IconProps) {
   return (
     <svg {...shared} width={14} height={14} {...props} aria-hidden="true">

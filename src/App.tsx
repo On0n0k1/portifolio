@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
-import { ChevronRightIcon, GitHubIcon, LinkedInIcon, MailIcon } from './icons'
+import { ChevronRightIcon, ExternalLinkIcon, GitHubIcon, LinkedInIcon, MailIcon } from './icons'
 import { FogBackground } from './components/FogBackground'
 import { ContributionHeatmap } from './components/ContributionHeatmap'
+import aquilaLarge from './assets/aquilaLarge.png'
 
 type ExperienceEntry = {
   role: string
@@ -132,9 +133,33 @@ type ProjectEntry = {
   tags: string[]
   description: string
   badge?: string
+  links?: { label: string; href: string }[]
+  image?: string
 }
 
 const projects: ProjectEntry[] = [
+  {
+    title: 'Aquilifer',
+    repo: 'aquilifer',
+    tags: [
+      'TypeScript',
+      'React',
+      'Chrome Extension (MV3)',
+      'WXT',
+      'Anthropic SDK',
+      'OpenAI SDK',
+      'WebCrypto',
+      'Playwright',
+      'GitHub Actions',
+    ],
+    description:
+      "MetaMask's trust model, applied to LLM API keys: a site requests a completion, Aquilifer holds the credential, the site never sees it.",
+    links: [
+      { label: 'Docs / live site', href: 'https://on0n0k1.github.io/projects/aquilifer/' },
+      { label: 'npm: aquilifer-types', href: 'https://www.npmjs.com/package/aquilifer-types' },
+    ],
+    image: aquilaLarge,
+  },
   {
     title: 'Generic Multi-threaded Worker Library',
     repo: 'kik_sync_service',
@@ -415,26 +440,40 @@ function App() {
               </h2>
               {projects.map((project) => (
                 <article className="job project kit-frame" key={project.repo}>
-                  <div className="job__header">
-                    <h3 className="job__role">{project.title}</h3>
-                    {project.badge && <p className="project__badge stat">{project.badge}</p>}
+                  <div className="project__layout">
+                    {project.image && (
+                      <img className="project__image" src={project.image} alt={`${project.title} logo`} />
+                    )}
+                    <div className="project__content">
+                      <div className="job__header">
+                        <h3 className="job__role">{project.title}</h3>
+                        {project.badge && <p className="project__badge stat">{project.badge}</p>}
+                      </div>
+                      <div className="project-tags">
+                        {project.tags.map((tag) => (
+                          <span className="project-tag" key={tag}>
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <p className="prose project__description">{project.description}</p>
+                      <div className="project-links">
+                        <a
+                          className="contact-link"
+                          href={`https://github.com/On0n0k1/${project.repo}`}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <GitHubIcon /> View source
+                        </a>
+                        {project.links?.map((link) => (
+                          <a className="contact-link" href={link.href} target="_blank" rel="noreferrer" key={link.href}>
+                            <ExternalLinkIcon /> {link.label}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                  <div className="project-tags">
-                    {project.tags.map((tag) => (
-                      <span className="project-tag" key={tag}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <p className="prose project__description">{project.description}</p>
-                  <a
-                    className="contact-link project__link"
-                    href={`https://github.com/On0n0k1/${project.repo}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <GitHubIcon /> View source
-                  </a>
                 </article>
               ))}
               <div className="placeholder">

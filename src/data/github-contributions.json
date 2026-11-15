@@ -1,39 +1,9 @@
 {
-  "fetchedAt": "2026-11-14T12:52:44.120Z",
+  "fetchedAt": "2026-11-15T13:19:50.179Z",
   "username": "On0n0k1",
   "totalContributions": 715,
   "totalCommitContributions": 625,
   "weeks": [
-    [
-      {
-        "date": "2025-11-09",
-        "count": 0
-      },
-      {
-        "date": "2025-11-10",
-        "count": 0
-      },
-      {
-        "date": "2025-11-11",
-        "count": 0
-      },
-      {
-        "date": "2025-11-12",
-        "count": 0
-      },
-      {
-        "date": "2025-11-13",
-        "count": 0
-      },
-      {
-        "date": "2025-11-14",
-        "count": 0
-      },
-      {
-        "date": "2025-11-15",
-        "count": 0
-      }
-    ],
     [
       {
         "date": "2025-11-16",
@@ -1591,6 +1561,12 @@
       },
       {
         "date": "2026-11-14",
+        "count": 0
+      }
+    ],
+    [
+      {
+        "date": "2026-11-15",
         "count": 0
       }
     ]
